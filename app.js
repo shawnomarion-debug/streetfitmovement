@@ -1,0 +1,148 @@
+/* ═══════════════════════════════════════════════════════
+   STREETFITMOVEMENT — app.js
+═══════════════════════════════════════════════════════ */
+
+/* ── NAV: scroll state + mobile toggle ─────────────── */
+const nav       = document.getElementById('nav');
+const navToggle = document.getElementById('navToggle');
+const navMenu   = document.getElementById('navMenu');
+
+window.addEventListener('scroll', () => {
+  nav.classList.toggle('scrolled', window.scrollY > 40);
+}, { passive: true });
+
+navToggle.addEventListener('click', () => {
+  const open = navMenu.classList.toggle('open');
+  navToggle.setAttribute('aria-expanded', open);
+  document.body.style.overflow = open ? 'hidden' : '';
+});
+
+// Close mobile menu when a link is clicked
+navMenu.querySelectorAll('.nav-link').forEach(link => {
+  link.addEventListener('click', () => {
+    navMenu.classList.remove('open');
+    navToggle.setAttribute('aria-expanded', 'false');
+    document.body.style.overflow = '';
+  });
+});
+
+/* ── SCROLL REVEAL ─────────────────────────────────── */
+const revealObserver = new IntersectionObserver((entries) => {
+  entries.forEach(e => {
+    if (e.isIntersecting) {
+      e.target.classList.add('visible');
+      revealObserver.unobserve(e.target);
+    }
+  });
+}, { threshold: 0.08, rootMargin: '0px 0px -40px 0px' });
+
+document.querySelectorAll('.reveal').forEach(el => revealObserver.observe(el));
+
+/* ── STAGGER CARDS ─────────────────────────────────── */
+document.querySelectorAll('.testi-grid .testi-card, .pkg-grid .pkg-card, .why-grid .why-card').forEach((el, i) => {
+  el.style.transitionDelay = `${i * 0.07}s`;
+});
+
+/* ── MEDIA TABS ────────────────────────────────────── */
+document.querySelectorAll('.media-tab').forEach(tab => {
+  tab.addEventListener('click', () => {
+    const target = tab.dataset.tab;
+
+    // Update tabs
+    document.querySelectorAll('.media-tab').forEach(t => {
+      t.classList.remove('active');
+      t.setAttribute('aria-selected', 'false');
+    });
+    tab.classList.add('active');
+    tab.setAttribute('aria-selected', 'true');
+
+    // Update panels
+    document.querySelectorAll('.media-panel').forEach(p => {
+      p.classList.remove('active');
+      p.hidden = true;
+    });
+    const panel = document.getElementById('tab-' + target);
+    if (panel) { panel.classList.add('active'); panel.hidden = false; }
+  });
+});
+
+/* ── BMI CALCULATOR ────────────────────────────────── */
+document.getElementById('bmiBtn').addEventListener('click', calcBMI);
+// Also allow Enter key in inputs
+document.querySelectorAll('#bmi-height, #bmi-weight, #bmi-age').forEach(inp => {
+  inp.addEventListener('keydown', e => { if (e.key === 'Enter') calcBMI(); });
+});
+
+function calcBMI() {
+  const h = parseFloat(document.getElementById('bmi-height').value);
+  const w = parseFloat(document.getElementById('bmi-weight').value);
+  if (!h || !w || h < 100 || h > 250 || w < 20 || w > 300) {
+    alert('Please enter a valid height (100–250 cm) and weight (20–300 kg).');
+    return;
+  }
+  const bmi      = w / ((h / 100) ** 2);
+  const bmiRound = Math.round(bmi * 10) / 10;
+
+  let cat, tip;
+  if (bmi < 18.5) {
+    cat = 'Underweight';
+    tip = "Your body needs more fuel. Shane's nutrition coaching can help you build lean mass with the right foods and training structure.";
+  } else if (bmi < 25) {
+    cat = 'Healthy Weight';
+    tip = "Great foundation! Now is the perfect time to build strength, improve mobility, and elevate your performance with STREETFITMOVEMENT.";
+  } else if (bmi < 30) {
+    cat = 'Overweight';
+    tip = "Totally manageable. Shane's combined dance + fitness training is proven to torch fat while keeping sessions genuinely fun and sustainable.";
+  } else {
+    cat = 'Obese';
+    tip = "The first step is the hardest — and you just took it. Shane specialises in transformative programs that meet you exactly where you are.";
+  }
+
+  const pct = Math.min(Math.max(((bmi - 10) / 30) * 100, 4), 94);
+
+  document.getElementById('bmi-num').textContent = bmiRound;
+  document.getElementById('bmi-cat').textContent = cat;
+  document.getElementById('bmi-tip').textContent = tip;
+
+  const bar = document.getElementById('bmi-bar');
+  bar.style.width = '0%';
+  requestAnimationFrame(() => { bar.style.width = pct + '%'; });
+
+  const result = document.getElementById('bmi-result');
+  result.classList.add('show');
+  result.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+}
+
+/* ── FOOTER YEAR ───────────────────────────────────── */
+const yearEl = document.getElementById('year');
+if (yearEl) yearEl.textContent = new Date().getFullYear();
+
+/* ── LAZY LOAD IMAGES ──────────────────────────────── */
+if ('loading' in HTMLImageElement.prototype) {
+  // Native lazy load supported — no action needed (loading="lazy" on tags)
+} else {
+  // Fallback for older browsers
+  const lazyImgs = document.querySelectorAll('img[loading="lazy"]');
+  const imgObserver = new IntersectionObserver(entries => {
+    entries.forEach(e => {
+      if (e.isIntersecting) {
+        const img = e.target;
+        img.src = img.dataset.src || img.src;
+        imgObserver.unobserve(img);
+      }
+    });
+  });
+  lazyImgs.forEach(img => imgObserver.observe(img));
+}
+
+/* ── SMOOTH ANCHOR OFFSET (accounts for fixed nav) ─── */
+document.querySelectorAll('a[href^="#"]').forEach(a => {
+  a.addEventListener('click', e => {
+    const id = a.getAttribute('href').slice(1);
+    const target = document.getElementById(id);
+    if (!target) return;
+    e.preventDefault();
+    const top = target.getBoundingClientRect().top + window.scrollY - 80;
+    window.scrollTo({ top, behavior: 'smooth' });
+  });
+});
