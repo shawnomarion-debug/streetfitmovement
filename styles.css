@@ -1,903 +1,643 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+/* ═══════════════════════════════════════════════════════
+   STREETFITMOVEMENT — styles.css
+   Premium black/white aesthetic
+   Fonts: Bebas Neue (display), Space Grotesk (body), Space Mono (labels)
+═══════════════════════════════════════════════════════ */
 
-  <!-- ═══ SEO ═══ -->
-  <title>Shane Mendes | Breakdance Artist · Certified Fitness Trainer · Movement Coach — Goa, India | STREETFITMOVEMENT</title>
-  <meta name="description" content="Shane Mendes — Battle of the Year India Winner, Red Bull BC One Finalist, Certified Personal Trainer & Nutrition Coach based in Goa. Book breakdance workshops, fitness coaching, corporate wellness, school programs & online coaching." />
-  <meta name="keywords" content="Breakdance Goa, Fitness Trainer Goa, Dance Workshops Goa, Online Coaching India, Capoeira Goa, Movement Training, STREETFITMOVEMENT, Shane Mendes, bboy Goa, breakdancing India, corporate wellness Goa, school dance programs Goa, Red Bull BC One India, Battle of the Year India, dance fitness Goa, personal trainer Goa" />
-  <meta name="author" content="Shane Mendes — STREETFITMOVEMENT" />
-  <meta name="robots" content="index, follow" />
-  <link rel="canonical" href="https://streetfitmovement.com" />
-  <meta property="og:type"        content="website" />
-  <meta property="og:url"         content="https://streetfitmovement.com" />
-  <meta property="og:title"       content="Shane Mendes | STREETFITMOVEMENT — Breakdance Artist & Fitness Trainer, Goa" />
-  <meta property="og:description" content="World-class breakdance artist, movement educator & certified fitness trainer. BOTY India Winner. Book workshops, coaching & performances." />
-  <meta property="og:image"       content="assets/images/og-image.jpg" />
-  <meta name="twitter:card"        content="summary_large_image" />
-  <meta name="twitter:title"       content="Shane Mendes | STREETFITMOVEMENT" />
-  <meta name="twitter:description" content="Breakdance Artist · Certified Fitness Trainer · Movement Coach — Goa, India" />
+/* ── RESET ─────────────────────────────────────────── */
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; font-size: 16px; }
+body {
+  background: #000;
+  color: #fff;
+  font-family: 'Space Grotesk', -apple-system, BlinkMacSystemFont, sans-serif;
+  overflow-x: hidden;
+  -webkit-font-smoothing: antialiased;
+}
+:focus-visible { outline: 2px solid #fff; outline-offset: 3px; }
+img { display: block; max-width: 100%; height: auto; }
 
-  <!-- Favicon -->
-  <link rel="icon" type="image/svg+xml" href="assets/icons/favicon.svg" />
-  <link rel="apple-touch-icon" sizes="180x180" href="assets/icons/apple-touch-icon.png" />
+/* ── VARIABLES ─────────────────────────────────────── */
+:root {
+  --ink: #000;
+  --ink-90: #050505;
+  --ink-80: #0a0a0a;
+  --ink-60: #111;
+  --border: rgba(255,255,255,0.1);
+  --mid: rgba(255,255,255,0.35);
+  --gold: #C9A84C;
+  --wa: #25D366;
+  --nav-h: 70px;
+  --max-w: 1100px;
+  --section-py: 6rem;
+  --radius: 3px;
+}
 
-  <!-- Fonts -->
-  <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Space+Grotesk:wght@400;500;600;700&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet" />
+/* ── TYPOGRAPHY HELPERS ────────────────────────────── */
+.font-display { font-family: 'Bebas Neue', sans-serif; letter-spacing: 0.04em; }
+.body-text { font-size: 0.95rem; line-height: 1.9; color: rgba(255,255,255,0.55); }
+.text-white { color: #fff !important; }
 
-  <link rel="stylesheet" href="styles.css" />
-</head>
-<body>
+/* ── ANIMATIONS ────────────────────────────────────── */
+@keyframes fadeUp   { from { opacity:0; transform:translateY(32px); } to { opacity:1; transform:translateY(0); } }
+@keyframes fadeIn   { from { opacity:0; } to { opacity:1; } }
+@keyframes marquee  { from { transform:translateX(0); } to { transform:translateX(-50%); } }
+@keyframes pulse    { 0% { transform:scale(1); opacity:.6; } 100% { transform:scale(2.2); opacity:0; } }
+@keyframes scrollLine { 0%,100% { opacity:.3; transform:scaleY(1); } 50% { opacity:1; transform:scaleY(1.15); } }
 
-<nav id="nav" role="navigation" aria-label="Main navigation">
-  <a href="#hero" class="nav-brand" aria-label="STREETFITMOVEMENT home">
-    <img src="assets/images/shane-logo.png" alt="STREETFITMOVEMENT" style="height:36px;width:36px;object-fit:cover;border-radius:4px;" />
-    <span class="nav-sfm-text">STREETFITMOVEMENT</span>
-  </a>
-  <div class="nav-links" id="navMenu">
-    <a href="#about"        class="nav-link">About</a>
-    <a href="#why-shane"    class="nav-link">Why Shane</a>
-    <a href="#offerings"    class="nav-link">Training</a>
-    <a href="#workshops"    class="nav-link">Workshops</a>
-    <a href="#packages"     class="nav-link">Packages</a>
-    <a href="#testimonials" class="nav-link">Results</a>
-    <a href="#media"        class="nav-link">Media</a>
-    <a href="https://wa.me/918830067403?text=Hi%20Shane!%20I%27d%20like%20to%20book%20a%20consultation."
-       target="_blank" rel="noopener" class="nav-link nav-cta">Book Now</a>
-  </div>
-  <button class="nav-toggle" id="navToggle" aria-label="Open menu" aria-expanded="false">
-    <span></span><span></span><span></span>
-  </button>
-</nav>
+.fade-up  { animation: fadeUp  0.9s ease both; }
+.fade-in  { animation: fadeIn  1.2s ease both; }
+.delay-1  { animation-delay: 0.15s; }
+.delay-2  { animation-delay: 0.30s; }
+.delay-3  { animation-delay: 0.45s; }
+.delay-4  { animation-delay: 0.60s; }
 
-<!-- HERO -->
-<section id="hero" class="hero" aria-label="Hero">
-  <div class="hero-grid-bg" aria-hidden="true"></div>
-  <div class="hero-content">
-    <div class="hero-logo fade-in">
-      <!-- TO ADD LOGO: replace inner div with <img src="assets/images/shane-logo.png" alt="Shane Mendes STREETFITMOVEMENT" /> -->
-      <img src="assets/images/shane-logo.png" alt="Shane Mendes STREETFITMOVEMENT" style="width:100%;height:100%;object-fit:cover;border-radius:50%;" />
-    </div>
-    <p class="hero-eyebrow fade-up delay-1">
-      <span class="eyebrow-pill">Goa, India</span>
-      <span aria-hidden="true">★</span>
-      <span class="eyebrow-pill">Battle of the Year India Winner</span>
-    </p>
-    <h1 class="hero-title fade-up delay-1">
-      Move Better.<br/>Perform <span class="hero-title-outline">Stronger.</span><br/>Live Freely.
-    </h1>
-    <p class="hero-role fade-up delay-2">
-      Breakdance Artist &nbsp;·&nbsp; Certified Fitness Trainer &nbsp;·&nbsp; Movement Coach
-    </p>
-    <p class="hero-desc fade-up delay-2">
-      Shane Mendes fuses street culture, athletic science, and movement artistry into transformational coaching — for athletes, students, corporates, and anyone ready to move differently.
-    </p>
-    <div class="hero-ctas fade-up delay-3">
-      <a href="https://wa.me/918830067403?text=Hi%20Shane!%20I%27d%20like%20to%20book%20a%20free%20consultation."
-         target="_blank" rel="noopener" class="btn-primary">
-        <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
-        Free Consultation on WhatsApp
-      </a>
-      <a href="#workshops" class="btn-ghost">Explore Workshops →</a>
-    </div>
-    <div class="hero-tags fade-up delay-4">
-      <span class="htag">Breakdancing</span>
-      <span class="htag">Capoeira</span>
-      <span class="htag">Calisthenics</span>
-      <span class="htag">Nutrition Coaching</span>
-      <span class="htag">Dance Fitness</span>
-      <span class="htag">Corporate Wellness</span>
-    </div>
-  </div>
-  <a href="#about" class="scroll-hint" aria-label="Scroll down">
-    <span>Scroll</span>
-    <div aria-hidden="true"></div>
-  </a>
-</section>
+.reveal { opacity:0; transform:translateY(28px); transition: opacity 0.7s ease, transform 0.7s ease; }
+.reveal.visible { opacity:1; transform:translateY(0); }
 
-<!-- MARQUEE -->
-<div class="marquee-wrap" aria-hidden="true">
-  <div class="marquee-inner">
-    <span class="marquee-item">Battle of the Year India Winner<span class="marquee-dot">★</span></span>
-    <span class="marquee-item">Red Bull BC One Finalist<span class="marquee-dot">★</span></span>
-    <span class="marquee-item">Certified Personal Trainer<span class="marquee-dot">★</span></span>
-    <span class="marquee-item">Breakdance<span class="marquee-dot">★</span></span>
-    <span class="marquee-item">Capoeira<span class="marquee-dot">★</span></span>
-    <span class="marquee-item">Nutrition Coach<span class="marquee-dot">★</span></span>
-    <span class="marquee-item">10+ Years Experience<span class="marquee-dot">★</span></span>
-    <span class="marquee-item">500+ Students Coached<span class="marquee-dot">★</span></span>
-    <span class="marquee-item">Goa India<span class="marquee-dot">★</span></span>
-    <span class="marquee-item">Dance + Fitness Specialist<span class="marquee-dot">★</span></span>
-    <span class="marquee-item">Battle of the Year India Winner<span class="marquee-dot">★</span></span>
-    <span class="marquee-item">Red Bull BC One Finalist<span class="marquee-dot">★</span></span>
-    <span class="marquee-item">Certified Personal Trainer<span class="marquee-dot">★</span></span>
-    <span class="marquee-item">Breakdance<span class="marquee-dot">★</span></span>
-    <span class="marquee-item">Capoeira<span class="marquee-dot">★</span></span>
-    <span class="marquee-item">Nutrition Coach<span class="marquee-dot">★</span></span>
-    <span class="marquee-item">10+ Years Experience<span class="marquee-dot">★</span></span>
-    <span class="marquee-item">500+ Students Coached<span class="marquee-dot">★</span></span>
-    <span class="marquee-item">Goa India<span class="marquee-dot">★</span></span>
-    <span class="marquee-item">Dance + Fitness Specialist<span class="marquee-dot">★</span></span>
-  </div>
-</div>
+/* ── LAYOUT HELPERS ────────────────────────────────── */
+.section { padding: var(--section-py) 1.5rem; max-width: var(--max-w); margin: 0 auto; }
+.section-inner { max-width: var(--max-w); margin: 0 auto; padding: 0 1.5rem 6rem; }
+.section-label { font-family: 'Space Mono', monospace; font-size: 0.7rem; letter-spacing: 0.3em; text-transform: uppercase; color: var(--mid); margin-bottom: 0.75rem; }
+.section-title { font-family: 'Bebas Neue', sans-serif; font-size: clamp(2.5rem, 7vw, 5rem); line-height: 1; color: #fff; letter-spacing: 0.04em; }
+.section-sub { font-size: 0.9rem; color: rgba(255,255,255,0.4); line-height: 1.7; margin-top: 1rem; max-width: 60ch; }
+hr.rule { border: none; border-top: 1px solid var(--border); margin: 0; }
 
-<!-- STATS STRIP -->
-<div class="stats-strip" aria-label="Key achievements">
-  <div class="stats-inner">
-    <div class="stat-block"><div class="stat-num">10<span class="stat-sup">+</span></div><div class="stat-lbl">Years Experience</div></div>
-    <div class="stat-divider" aria-hidden="true"></div>
-    <div class="stat-block"><div class="stat-num">500<span class="stat-sup">+</span></div><div class="stat-lbl">Students Coached</div></div>
-    <div class="stat-divider" aria-hidden="true"></div>
-    <div class="stat-block"><div class="stat-num">200<span class="stat-sup">+</span></div><div class="stat-lbl">Workshops Conducted</div></div>
-    <div class="stat-divider" aria-hidden="true"></div>
-    <div class="stat-block"><div class="stat-num">1<span class="stat-sup">st</span></div><div class="stat-lbl">BOTY India</div></div>
-    <div class="stat-divider" aria-hidden="true"></div>
-    <div class="stat-block"><div class="stat-num">RB</div><div class="stat-lbl">BC One Finalist</div></div>
-  </div>
-</div>
+/* ── BUTTONS ───────────────────────────────────────── */
+.btn-primary {
+  font-family: 'Space Mono', monospace;
+  font-weight: 700; font-size: 0.78rem; letter-spacing: 0.12em; text-transform: uppercase;
+  padding: 0.9rem 2.2rem; background: #fff; color: #000;
+  border: 2px solid #fff; cursor: pointer; text-decoration: none;
+  display: inline-flex; align-items: center; gap: 0.5rem;
+  transition: background .2s, transform .15s, border-color .2s;
+}
+.btn-primary:hover { background: var(--gold); border-color: var(--gold); transform: translateY(-2px); }
 
-<!-- ABOUT -->
-<hr class="rule"/>
-<div id="about" style="background:#000;">
-  <div class="section">
-    <p class="section-label reveal">The Artist. The Coach. The Movement.</p>
-    <div class="about-grid">
-      <div class="reveal">
-        <h2 class="section-title">From the Streets<br/>of Goa<br/>to the World Stage.</h2>
-        <div class="stat-row">
-          <div><div class="stat-num-sm">10+</div><div class="stat-lbl">Years Training</div></div>
-          <div><div class="stat-num-sm">5</div><div class="stat-lbl">Dance Styles</div></div>
-          <div><div class="stat-num-sm">500+</div><div class="stat-lbl">Students</div></div>
-        </div>
-      </div>
-      <div class="reveal" style="display:flex;flex-direction:column;gap:1.5rem;">
-        <p class="body-text">
-          From the streets of <strong class="text-white">Goa</strong>, Shane Mendes built his craft one battle at a time. A winner of <strong class="text-white">Battle of the Year India</strong> and finalist at <strong class="text-white">Red Bull BC One</strong>, he turned competitive dance into a living philosophy of movement.
-        </p>
-        <p class="body-text">
-          Multi-certified as a <strong class="text-white">Personal Trainer and Nutrition Coach</strong> with over a decade of hands-on experience, Shane founded <strong class="text-white">STREETFITMOVEMENT</strong> to prove that athletic training and street dance are the same language — spoken differently.
-        </p>
-        <p class="body-text">
-          His clients range from 8-year-olds discovering movement for the first time to corporate teams unlocking creativity through embodied practice — to competitive athletes preparing for the world stage.
-        </p>
-        <div style="display:flex;gap:0.6rem;flex-wrap:wrap;margin-top:0.5rem;">
-          <span class="badge">BOTY India Winner</span>
-          <span class="badge">Red Bull BC One</span>
-          <span class="badge">Certified PT</span>
-          <span class="badge">Nutrition Coach</span>
-          <span class="badge">10+ Years</span>
-        </div>
-        <a href="#why-shane" class="btn-ghost" style="align-self:flex-start;">What Makes Shane Different →</a>
-      </div>
-    </div>
-  </div>
-</div>
+.btn-ghost {
+  font-family: 'Space Mono', monospace;
+  font-weight: 700; font-size: 0.78rem; letter-spacing: 0.12em; text-transform: uppercase;
+  padding: 0.9rem 2.2rem; background: transparent; color: #fff;
+  border: 1px solid rgba(255,255,255,0.3); cursor: pointer;
+  text-decoration: none; display: inline-flex; align-items: center; gap: 0.5rem;
+  transition: border-color .2s, background .2s, transform .15s;
+}
+.btn-ghost:hover { border-color: #fff; background: rgba(255,255,255,0.06); transform: translateY(-2px); }
 
-<!-- WHY TRAIN WITH SHANE -->
-<hr class="rule"/>
-<div id="why-shane" style="background:#050505;">
-  <div class="section">
-    <p class="section-label reveal">Credentials & Accomplishments</p>
-    <h2 class="section-title reveal">Why Train With Shane?</h2>
-    <p class="section-sub reveal">The rare combination of world-level artistry and certified fitness science — in one coach.</p>
-    <div class="why-grid">
-      <article class="why-card reveal">
-        <div class="why-icon" aria-hidden="true">
-          <svg viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M24 4l5.5 11.2L42 17.3l-9 8.8 2.1 12.4L24 32.5l-11.1 6.1 2.1-12.4-9-8.8 12.5-2.1z"/></svg>
-        </div>
-        <h3 class="why-title">Battle of the Year India</h3>
-        <p class="why-desc">Winner of India's most prestigious breakdance competition — proof that Shane's skills are world-class, not just local.</p>
-        <span class="why-badge">Champion</span>
-      </article>
-      <article class="why-card reveal">
-        <div class="why-icon" aria-hidden="true">
-          <svg viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="24" cy="24" r="18"/><path d="M24 6v18l8 8"/><circle cx="24" cy="24" r="3" fill="currentColor"/></svg>
-        </div>
-        <h3 class="why-title">Red Bull BC One Finalist</h3>
-        <p class="why-desc">Competed at Red Bull BC One — the world's biggest one-on-one breakdance competition — representing India on the global stage.</p>
-        <span class="why-badge">Finalist</span>
-      </article>
-      <article class="why-card reveal">
-        <div class="why-icon" aria-hidden="true">
-          <svg viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="8" y="8" width="32" height="32" rx="3"/><path d="M16 24l6 6 10-12"/></svg>
-        </div>
-        <h3 class="why-title">Certified Personal Trainer</h3>
-        <p class="why-desc">Formally certified in personal training — every workout is designed with scientific precision for your specific body and goals.</p>
-        <span class="why-badge">Certified</span>
-      </article>
-      <article class="why-card reveal">
-        <div class="why-icon" aria-hidden="true">
-          <svg viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M8 36s4-6 16-6 16 6 16 6"/><circle cx="24" cy="18" r="8"/></svg>
-        </div>
-        <h3 class="why-title">Nutrition Coach</h3>
-        <p class="why-desc">Certified Nutrition Coach who treats food as fuel — because great movement starts with what you put in your body.</p>
-        <span class="why-badge">Certified</span>
-      </article>
-      <article class="why-card reveal">
-        <div class="why-icon" aria-hidden="true">
-          <svg viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="6" y="20" width="36" height="8" rx="4"/><circle cx="14" cy="24" r="6"/><circle cx="34" cy="24" r="6"/></svg>
-        </div>
-        <h3 class="why-title">10+ Years Experience</h3>
-        <p class="why-desc">Over a decade in the trenches — coaching everyone from 8-year-olds to 60-year-olds, complete beginners to professional athletes.</p>
-        <span class="why-badge">10+ Years</span>
-      </article>
-      <article class="why-card reveal">
-        <div class="why-icon" aria-hidden="true">
-          <svg viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M24 6c-6 6-14 8-14 18 0 8 6 14 14 14s14-6 14-14c0-10-8-12-14-18z"/><path d="M24 20v8M20 24h8"/></svg>
-        </div>
-        <h3 class="why-title">Dance + Fitness Movement Specialist</h3>
-        <p class="why-desc">Unique fusion of breakdancing, Capoeira, and urban movement with functional fitness and wellness — nobody else in Goa does this.</p>
-        <span class="why-badge">Specialist</span>
-      </article>
-    </div>
-    <div style="text-align:center;margin-top:3rem;">
-      <a href="https://wa.me/918830067403?text=Hi%20Shane!%20I%27d%20like%20to%20start%20training%20with%20you."
-         target="_blank" rel="noopener" class="btn-primary">Start Training With Shane →</a>
-    </div>
-  </div>
-</div>
+.btn-wa {
+  background: var(--wa); color: #fff;
+  font-family: 'Space Mono', monospace;
+  font-weight: 700; font-size: 0.82rem; letter-spacing: 0.1em; text-transform: uppercase;
+  padding: 1rem 2.5rem; border: none; cursor: pointer;
+  text-decoration: none; display: inline-flex; align-items: center; gap: 0.6rem;
+  transition: background .2s, transform .15s;
+}
+.btn-wa:hover { background: #1da851; transform: translateY(-2px); }
 
-<!-- ACHIEVEMENTS -->
-<hr class="rule"/>
-<div id="achievements" style="background:#000;">
-  <div class="section">
-    <p class="section-label reveal">Shane Mendes — On the World Stage</p>
-    <h2 class="section-title reveal">A Champion's Journey</h2>
-    <p class="section-sub reveal" style="margin-bottom:2.5rem;">From the streets of Goa to the biggest stages in India — this is Shane's story in numbers and moments.</p>
-    <div class="achievements-grid">
+.btn-sm  { font-size: 0.7rem !important; padding: 0.65rem 1.4rem !important; }
+.btn-full { width: 100%; justify-content: center; margin-top: auto; }
 
-      <article class="achievement-card achievement-featured reveal">
-        <div class="achievement-img">
-          <img src="assets/images/boty-india.jpg" alt="Shane Mendes winning India's biggest breakdance competition" loading="lazy" style="width:100%;height:100%;object-fit:cover;display:block;" />
-        </div>
-        <div class="achievement-body">
-          <span class="achievement-badge">🏆 National Champion</span>
-          <h3 class="achievement-title">India's #1 Bboy</h3>
-          <p class="achievement-desc">Shane claimed the top title at India's most prestigious breakdance competition — the moment that proved Goa had produced a national champion. Every move. Every battle. Every win led to this.</p>
-          <a href="https://wa.me/918830067403?text=Hi%20Shane!%20I%20want%20to%20train%20with%20India%27s%20number%201%20bboy."
-             target="_blank" rel="noopener" class="btn-ghost btn-sm">Train With India's #1 →</a>
-        </div>
-      </article>
+/* ── IMAGE PLACEHOLDERS ────────────────────────────── */
+.img-ph {
+  background: #0d0d0d;
+  border: 1px dashed rgba(255,255,255,0.1);
+  display: flex; align-items: center; justify-content: center;
+  width: 100%; height: 100%; min-height: 200px;
+}
+.img-ph-inner { text-align: center; padding: 1.5rem; }
+.img-ph-icon  { font-size: 2.5rem; margin-bottom: 0.75rem; opacity: 0.4; }
+.img-ph-label { font-family: 'Space Mono', monospace; font-size: 0.6rem; color: rgba(255,255,255,0.2); letter-spacing: 0.08em; line-height: 1.8; }
+.img-ph-landscape { min-height: 200px; }
+.img-ph-square    { aspect-ratio: 1; min-height: unset; height: 100%; }
 
-      <article class="achievement-card reveal">
-        <div class="achievement-img achievement-img-sm">
-          <img src="assets/images/redbull-bcone.jpg" alt="Shane Mendes performing at Red Bull BC One" loading="lazy" style="width:100%;height:100%;object-fit:cover;display:block;" />
-        </div>
-        <div class="achievement-body">
-          <span class="achievement-badge">🌍 Global Stage</span>
-          <h3 class="achievement-title">World-Level Competitor</h3>
-          <p class="achievement-desc">Shane represented India on one of the world's biggest breakdance stages — going head to head with the planet's best bboys.</p>
-        </div>
-      </article>
+/* ── BADGE / TAGS ──────────────────────────────────── */
+.badge {
+  font-family: 'Space Mono', monospace;
+  font-size: 0.65rem; letter-spacing: 0.15em; text-transform: uppercase;
+  color: var(--mid); border: 1px solid rgba(255,255,255,0.15);
+  padding: 0.3rem 0.8rem; display: inline-block;
+}
+.htag {
+  font-family: 'Space Mono', monospace;
+  font-size: 0.65rem; letter-spacing: 0.08em; text-transform: uppercase;
+  padding: 0.3rem 0.75rem;
+  background: rgba(255,255,255,0.04);
+  border: 1px solid rgba(255,255,255,0.12);
+  color: rgba(255,255,255,0.4);
+}
 
-      <article class="achievement-card reveal">
-        <div class="achievement-img achievement-img-sm">
-          <img src="assets/images/workshops.jpg" alt="Shane Mendes conducting a workshop" loading="lazy" style="width:100%;height:100%;object-fit:cover;display:block;" />
-        </div>
-        <div class="achievement-body">
-          <span class="achievement-badge">🎓 200+ Sessions</span>
-          <h3 class="achievement-title">Master Educator</h3>
-          <p class="achievement-desc">Over 200 workshops delivered to schools, corporates, and communities — 500+ students transformed through movement.</p>
-        </div>
-      </article>
+/* ── NAVIGATION ────────────────────────────────────── */
+#nav {
+  position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+  height: var(--nav-h);
+  display: flex; justify-content: space-between; align-items: center;
+  padding: 0 2rem;
+  background: rgba(0,0,0,0.82);
+  backdrop-filter: blur(14px);
+  border-bottom: 1px solid rgba(255,255,255,0.08);
+  transition: background .3s, border-color .3s;
+}
+#nav.scrolled {
+  background: rgba(0,0,0,0.96);
+  border-bottom-color: rgba(255,255,255,0.14);
+}
 
-      <article class="achievement-card reveal">
-        <div class="achievement-img achievement-img-sm">
-          <img src="assets/images/gallery/comp-boty.jpg" alt="Shane Mendes battle competition" loading="lazy" style="width:100%;height:100%;object-fit:cover;display:block;" />
-        </div>
-        <div class="achievement-body">
-          <span class="achievement-badge">💪 10+ Years</span>
-          <h3 class="achievement-title">Decades of Dedication</h3>
-          <p class="achievement-desc">Over a decade of training, competing, and coaching — building one of Goa's most respected movement legacies.</p>
-        </div>
-      </article>
+.nav-brand { display: flex; align-items: center; gap: 0.6rem; text-decoration: none; }
+.nav-sfm-mark {
+  width: 34px; height: 34px; background: #fff; color: #000;
+  font-family: 'Bebas Neue', sans-serif; font-size: 0.9rem; letter-spacing: 0.05em;
+  display: flex; align-items: center; justify-content: center; flex-shrink: 0;
+  /* LOGO: once shane-logo.png is placed, replace this block with an <img> */
+}
+.nav-logo-img { height: 34px; width: auto; object-fit: contain; }
+.nav-sfm-text { font-family: 'Bebas Neue', sans-serif; font-size: 1.2rem; letter-spacing: 0.15em; color: #fff; }
 
-      <article class="achievement-card reveal">
-        <div class="achievement-img achievement-img-sm">
-          <img src="assets/images/gallery/comp-local.jpg" alt="Shane Mendes performance" loading="lazy" style="width:100%;height:100%;object-fit:cover;display:block;" />
-        </div>
-        <div class="achievement-body">
-          <span class="achievement-badge">🎭 Performer</span>
-          <h3 class="achievement-title">Stage & Event Artist</h3>
-          <p class="achievement-desc">Choreography and live performances for corporate events, festivals, brand launches, and cultural shows across India.</p>
-        </div>
-      </article>
+.nav-links { display: flex; align-items: center; gap: 0.25rem; }
+.nav-link {
+  font-family: 'Space Mono', monospace;
+  font-size: 0.68rem; letter-spacing: 0.16em; text-transform: uppercase;
+  color: rgba(255,255,255,0.45); text-decoration: none;
+  padding: 0.45rem 0.7rem;
+  transition: color .2s;
+}
+.nav-link:hover { color: #fff; }
+.nav-cta {
+  background: #fff; color: #000 !important;
+  padding: 0.45rem 1rem; margin-left: 0.5rem;
+  transition: background .2s !important;
+}
+.nav-cta:hover { background: var(--gold) !important; color: #000 !important; }
 
-      <article class="achievement-card reveal">
-        <div class="achievement-img achievement-img-sm">
-          <img src="assets/images/gallery/comp-perf.jpg" alt="Shane Mendes teaching and coaching" loading="lazy" style="width:100%;height:100%;object-fit:cover;display:block;" />
-        </div>
-        <div class="achievement-body">
-          <span class="achievement-badge">✅ Dual Certified</span>
-          <h3 class="achievement-title">Certified Trainer & Nutritionist</h3>
-          <p class="achievement-desc">Formally certified in Personal Training and Nutrition — combining science with street culture to get real, lasting results.</p>
-        </div>
-      </article>
+.nav-toggle {
+  display: none; flex-direction: column; gap: 5px;
+  background: none; border: none; cursor: pointer; padding: 0.5rem;
+}
+.nav-toggle span { display: block; width: 22px; height: 2px; background: #fff; border-radius: 2px; transition: transform .25s, opacity .25s; }
+.nav-toggle[aria-expanded="true"] span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
+.nav-toggle[aria-expanded="true"] span:nth-child(2) { opacity: 0; }
+.nav-toggle[aria-expanded="true"] span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
 
-    </div>
-  </div>
-</div>
+/* ── HERO ──────────────────────────────────────────── */
+.hero {
+  min-height: 100svh;
+  background: #000;
+  display: flex; flex-direction: column; align-items: center; justify-content: center;
+  text-align: center; padding: calc(var(--nav-h) + 2rem) 1.5rem 2rem;
+  position: relative; overflow: hidden;
+}
+.hero-grid-bg {
+  position: absolute; inset: 0; pointer-events: none;
+  background:
+    repeating-linear-gradient(0deg, transparent, transparent 79px, rgba(255,255,255,0.025) 80px),
+    repeating-linear-gradient(90deg, transparent, transparent 79px, rgba(255,255,255,0.025) 80px);
+}
+.hero-content { position: relative; z-index: 1; max-width: 800px; width: 100%; }
 
-<!-- OFFERINGS -->
-<hr class="rule"/>
-<div id="offerings" style="background:#000;">
-  <div class="section" style="padding-bottom:0;">
-    <p class="section-label reveal">Choose Your Path</p>
-    <h2 class="section-title reveal">Training Programs</h2>
-    <p class="section-sub reveal">Whether building your first headstand or preparing for competition — there's a program built for you.</p>
-  </div>
-  <div class="section-inner">
-    <div class="offering-grid reveal">
-      <div class="offering-card">
-        <div class="offering-icon" aria-hidden="true">
-          <svg viewBox="0 0 40 40" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="20" cy="12" r="5"/><path d="M8 34c0-6.6 5.4-12 12-12s12 5.4 12 12"/></svg>
-        </div>
-        <div class="offering-title">1-on-1 Personal Training</div>
-        <div class="offering-sub">Bespoke coaching for your body &amp; goals</div>
-        <div class="style-tags">
-          <span class="style-tag">Strength</span><span class="style-tag">Fat Loss</span><span class="style-tag">Mobility</span><span class="style-tag">Performance</span>
-        </div>
-        <ul class="offering-list">
-          <li>Custom training plans, revised monthly</li>
-          <li>Nutrition guidance included</li>
-          <li>Weekly progress tracking</li>
-          <li>In-person (Goa) or online</li>
-        </ul>
-        <a href="https://wa.me/918830067403?text=Hi%20Shane!%20I%27m%20interested%20in%201-on-1%20personal%20training."
-           target="_blank" rel="noopener" class="btn-ghost btn-full">Enquire Now →</a>
-      </div>
-      <div class="offering-card">
-        <div class="offering-icon" aria-hidden="true">
-          <svg viewBox="0 0 40 40" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M20 4l-14 10v22h28V14L20 4z"/><rect x="14" y="22" width="12" height="14"/></svg>
-        </div>
-        <div class="offering-title">Breakdance Training</div>
-        <div class="offering-sub">Learn from a competition winner</div>
-        <div class="style-tags">
-          <span class="style-tag">Toprock</span><span class="style-tag">Footwork</span><span class="style-tag">Freezes</span><span class="style-tag">Power Moves</span>
-        </div>
-        <ul class="offering-list">
-          <li>Beginner to advanced levels</li>
-          <li>Technique, musicality &amp; style</li>
-          <li>All ages welcome</li>
-          <li>Competition prep available</li>
-        </ul>
-        <a href="https://wa.me/918830067403?text=Hi%20Shane!%20I%27m%20interested%20in%20breakdance%20training."
-           target="_blank" rel="noopener" class="btn-ghost btn-full">Book a Class →</a>
-      </div>
-      <div class="offering-card">
-        <div class="offering-icon" aria-hidden="true">
-          <svg viewBox="0 0 40 40" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="20" cy="20" r="14"/><path d="M20 8c4 4 8 6 8 12s-4 8-8 8-8-2-8-8 4-8 8-12z"/></svg>
-        </div>
-        <div class="offering-title">Movement &amp; Capoeira</div>
-        <div class="offering-sub">Flow, coordination &amp; body awareness</div>
-        <div class="style-tags">
-          <span class="style-tag">Capoeira</span><span class="style-tag">Acrobatics</span><span class="style-tag">Bodyweight</span><span class="style-tag">Flow</span>
-        </div>
-        <ul class="offering-list">
-          <li>Capoeira fundamentals &amp; ginga</li>
-          <li>Acrobatics &amp; movement flow</li>
-          <li>Body control &amp; coordination</li>
-          <li>Group or individual sessions</li>
-        </ul>
-        <a href="https://wa.me/918830067403?text=Hi%20Shane!%20I%27m%20interested%20in%20Capoeira%20and%20movement%20training."
-           target="_blank" rel="noopener" class="btn-ghost btn-full">Explore Movement →</a>
-      </div>
-      <div class="offering-card">
-        <div class="offering-icon" aria-hidden="true">
-          <svg viewBox="0 0 40 40" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M8 32s4-8 12-8 12 8 12 8"/><path d="M20 8c-3 3-7 5-7 11s3 8 7 8 7-2 7-8-4-8-7-11z"/></svg>
-        </div>
-        <div class="offering-title">Dance Fitness Groups</div>
-        <div class="offering-sub">Burn fat. Build endurance. Have fun.</div>
-        <div class="style-tags">
-          <span class="style-tag">Cardio</span><span class="style-tag">HIIT</span><span class="style-tag">Bollywood</span><span class="style-tag">House</span>
-        </div>
-        <ul class="offering-list">
-          <li>High-energy group classes</li>
-          <li>Cardio + dance coordination</li>
-          <li>Fun for all fitness levels</li>
-          <li>Morning &amp; evening batches</li>
-        </ul>
-        <a href="https://wa.me/918830067403?text=Hi%20Shane!%20I%27m%20interested%20in%20dance%20fitness%20group%20classes."
-           target="_blank" rel="noopener" class="btn-ghost btn-full">Join a Class →</a>
-      </div>
-      <div class="offering-card">
-        <div class="offering-icon" aria-hidden="true">
-          <svg viewBox="0 0 40 40" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="6" y="6" width="28" height="22" rx="3"/><path d="M14 34h12M20 28v6M12 16l5 5 11-9"/></svg>
-        </div>
-        <div class="offering-title">Online Coaching</div>
-        <div class="offering-sub">Train with Shane from anywhere</div>
-        <div class="style-tags">
-          <span class="style-tag">Remote</span><span class="style-tag">Video Plans</span><span class="style-tag">WhatsApp</span><span class="style-tag">Nutrition</span>
-        </div>
-        <ul class="offering-list">
-          <li>Custom video workout plans</li>
-          <li>Meal &amp; nutrition planning</li>
-          <li>WhatsApp check-ins &amp; support</li>
-          <li>Monthly plan revisions</li>
-        </ul>
-        <a href="https://wa.me/918830067403?text=Hi%20Shane!%20I%27m%20interested%20in%20online%20coaching."
-           target="_blank" rel="noopener" class="btn-ghost btn-full">Start Online →</a>
-      </div>
-      <div class="offering-card">
-        <div class="offering-icon" aria-hidden="true">
-          <svg viewBox="0 0 40 40" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M20 4l4 8 9 1.3-6.5 6.3 1.5 9L20 24l-8 4.6 1.5-9L7 13.3l9-1.3z"/></svg>
-        </div>
-        <div class="offering-title">Performance Coaching</div>
-        <div class="offering-sub">Competition &amp; event preparation</div>
-        <div class="style-tags">
-          <span class="style-tag">Choreography</span><span class="style-tag">Stage Presence</span><span class="style-tag">Competition</span>
-        </div>
-        <ul class="offering-list">
-          <li>Competition preparation programs</li>
-          <li>Custom choreography creation</li>
-          <li>Stage presence coaching</li>
-          <li>Peak physical conditioning</li>
-        </ul>
-        <a href="https://wa.me/918830067403?text=Hi%20Shane!%20I%27m%20interested%20in%20performance%20coaching."
-           target="_blank" rel="noopener" class="btn-ghost btn-full">Book Performance Coach →</a>
-      </div>
-    </div>
-  </div>
-</div>
+.hero-logo {
+  width: 130px; height: 130px; border-radius: 50%;
+  border: 1px solid rgba(255,255,255,0.18);
+  background: #000; overflow: hidden;
+  margin: 0 auto 2rem;
+  box-shadow: 0 0 0 6px rgba(255,255,255,0.04), 0 0 50px rgba(255,255,255,0.06);
+  display: flex; align-items: center; justify-content: center;
+}
+.hero-logo img { width: 100%; height: 100%; object-fit: cover; }
+.hero-logo-inner {
+  font-family: 'Bebas Neue', sans-serif; font-size: 2rem; letter-spacing: 0.08em;
+  color: rgba(255,255,255,0.25);
+  /* Remove once real logo is added */
+}
 
-<!-- WORKSHOPS & EVENTS -->
-<hr class="rule"/>
-<div id="workshops" style="background:#050505;">
-  <div class="section" style="padding-bottom:0;">
-    <p class="section-label reveal">Bringing Movement to Communities</p>
-    <h2 class="section-title reveal">Workshops &amp; Events</h2>
-    <p class="section-sub reveal">Shane brings world-class movement education to schools, boardrooms, stages, and communities across India.</p>
-  </div>
-  <div class="section-inner">
-    <div class="workshops-grid">
-      <article class="workshop-card reveal">
-        <div class="workshop-img">
-          <img src="assets/images/ws-school.jpg" alt="Shane teaching school students" loading="lazy" style="width:100%;height:180px;object-fit:cover;" />
-        </div>
-        <div class="workshop-body">
-          <span class="workshop-cat">Education</span>
-          <h3 class="workshop-title">School Programs</h3>
-          <p class="workshop-desc">Age-appropriate dance and movement workshops — building student confidence, coordination, and creativity inside and outside the curriculum.</p>
-          <ul class="workshop-list">
-            <li>Breakdance introduction for students</li>
-            <li>Dance fitness for PE classes</li>
-            <li>Talent showcase preparation</li>
-            <li>Confidence &amp; expression building</li>
-          </ul>
-          <a href="https://wa.me/918830067403?text=Hi%20Shane!%20I%27d%20like%20to%20book%20a%20School%20Program%20workshop."
-             target="_blank" rel="noopener" class="btn-ghost btn-sm">Book for Your School →</a>
-        </div>
-      </article>
-      <article class="workshop-card reveal">
-        <div class="workshop-img">
-          <img src="assets/images/ws-corporate.jpg" alt="Shane leading corporate wellness session" loading="lazy" style="width:100%;height:180px;object-fit:cover;" />
-        </div>
-        <div class="workshop-body">
-          <span class="workshop-cat">Corporate</span>
-          <h3 class="workshop-title">Corporate Wellness Workshops</h3>
-          <p class="workshop-desc">Science-backed sessions that reduce stress, increase energy, and improve team culture. Movement that transforms your workplace.</p>
-          <ul class="workshop-list">
-            <li>Desk mobility &amp; breathwork</li>
-            <li>Stress release movement sessions</li>
-            <li>Energy &amp; focus workshops</li>
-            <li>Customisable for any team size</li>
-          </ul>
-          <a href="https://wa.me/918830067403?text=Hi%20Shane!%20I%27d%20like%20to%20enquire%20about%20Corporate%20Wellness%20workshops."
-             target="_blank" rel="noopener" class="btn-ghost btn-sm">Corporate Enquiry →</a>
-        </div>
-      </article>
-      <article class="workshop-card reveal">
-        <div class="workshop-img">
-          <img src="assets/images/ws-teambuilding.jpg" alt="Team building session with Shane" loading="lazy" style="width:100%;height:180px;object-fit:cover;" />
-        </div>
-        <div class="workshop-body">
-          <span class="workshop-cat">Team Building</span>
-          <h3 class="workshop-title">Team Building Sessions</h3>
-          <p class="workshop-desc">Movement-based team building that creates real connection, breaks barriers, and unlocks collective creativity unlike any other team activity.</p>
-          <ul class="workshop-list">
-            <li>Collaborative movement challenges</li>
-            <li>Synchronised performance creation</li>
-            <li>Communication through dance</li>
-            <li>Debrief &amp; reflection included</li>
-          </ul>
-          <a href="https://wa.me/918830067403?text=Hi%20Shane!%20I%27d%20like%20to%20book%20a%20Team%20Building%20Session."
-             target="_blank" rel="noopener" class="btn-ghost btn-sm">Build Your Team →</a>
-        </div>
-      </article>
-      <article class="workshop-card reveal">
-        <div class="workshop-img">
-          <img src="assets/images/ws-dance.jpg" alt="Dance workshop with Shane" loading="lazy" style="width:100%;height:180px;object-fit:cover;" />
-        </div>
-        <div class="workshop-body">
-          <span class="workshop-cat">Dance</span>
-          <h3 class="workshop-title">Dance Workshops</h3>
-          <p class="workshop-desc">Intensive or introductory workshops covering breakdancing, urban styles, Capoeira, and dance fitness — all levels welcome.</p>
-          <ul class="workshop-list">
-            <li>Bboy/bgirl foundations</li>
-            <li>Advanced power moves &amp; freezes</li>
-            <li>Urban choreography sessions</li>
-            <li>Capoeira movement basics</li>
-          </ul>
-          <a href="https://wa.me/918830067403?text=Hi%20Shane!%20I%27d%20like%20to%20book%20a%20Dance%20Workshop."
-             target="_blank" rel="noopener" class="btn-ghost btn-sm">Book Dance Workshop →</a>
-        </div>
-      </article>
-      <article class="workshop-card reveal">
-        <div class="workshop-img">
-          <img src="assets/images/ws-choreo.jpg" alt="Shane choreographing a performance" loading="lazy" style="width:100%;height:180px;object-fit:cover;" />
-        </div>
-        <div class="workshop-body">
-          <span class="workshop-cat">Performance</span>
-          <h3 class="workshop-title">Performance Choreography</h3>
-          <p class="workshop-desc">Custom choreography for events, shows, brand activations, weddings, and cultural performances. Shane brings your vision to life through movement.</p>
-          <ul class="workshop-list">
-            <li>Corporate events &amp; product launches</li>
-            <li>Cultural festivals &amp; stage productions</li>
-            <li>Music videos &amp; brand content</li>
-            <li>Wedding choreography</li>
-          </ul>
-          <a href="https://wa.me/918830067403?text=Hi%20Shane!%20I%27d%20like%20to%20book%20choreography%20services."
-             target="_blank" rel="noopener" class="btn-ghost btn-sm">Get a Quote →</a>
-        </div>
-      </article>
-      <article class="workshop-card reveal">
-        <div class="workshop-img">
-          <img src="assets/images/ws-speaking.jpg" alt="Shane speaking at an event" loading="lazy" style="width:100%;height:180px;object-fit:cover;" />
-        </div>
-        <div class="workshop-body">
-          <span class="workshop-cat">Speaking</span>
-          <h3 class="workshop-title">Guest Speaking &amp; Movement Education</h3>
-          <p class="workshop-desc">Shane shares his journey from Goa's streets to world competition stages — inspiring on discipline, identity, wellness, and the power of movement.</p>
-          <ul class="workshop-list">
-            <li>Schools &amp; universities</li>
-            <li>Wellness &amp; lifestyle conferences</li>
-            <li>Corporate leadership events</li>
-            <li>Youth empowerment programs</li>
-          </ul>
-          <a href="https://wa.me/918830067403?text=Hi%20Shane!%20I%27d%20like%20to%20invite%20you%20as%20a%20guest%20speaker."
-             target="_blank" rel="noopener" class="btn-ghost btn-sm">Invite Shane to Speak →</a>
-        </div>
-      </article>
-    </div>
-    <div class="workshops-cta-strip reveal">
-      <p>Need something custom? Shane creates bespoke programs for any audience or occasion.</p>
-      <a href="https://wa.me/918830067403?text=Hi%20Shane!%20I%27d%20like%20to%20discuss%20a%20custom%20workshop."
-         target="_blank" rel="noopener" class="btn-primary">Discuss a Custom Workshop →</a>
-    </div>
-  </div>
-</div>
+.hero-eyebrow {
+  display: flex; align-items: center; justify-content: center;
+  gap: 0.6rem; flex-wrap: wrap;
+  font-family: 'Space Mono', monospace; font-size: 0.65rem; color: var(--mid);
+  letter-spacing: 0.15em; text-transform: uppercase;
+  margin-bottom: 1.25rem;
+}
+.eyebrow-pill {
+  border: 1px solid rgba(255,255,255,0.14);
+  padding: 0.25rem 0.65rem;
+  color: rgba(255,255,255,0.45);
+}
 
-<!-- PACKAGES -->
-<hr class="rule"/>
-<div id="packages" style="background:#000;">
-  <div class="section" style="padding-bottom:0;">
-    <p class="section-label reveal">Investment</p>
-    <h2 class="section-title reveal">Choose Your Protocol</h2>
-  </div>
-  <div class="section-inner">
-    <div class="pkg-grid reveal">
-      <div class="pkg-card">
-        <div class="pkg-name">Basic Protocol</div>
-        <div class="pkg-price">₹6K</div>
-        <div class="pkg-period">per month</div>
-        <ul class="pkg-features">
-          <li>8 sessions / month</li>
-          <li>Personalised workout plan</li>
-          <li>Basic nutrition guidance</li>
-          <li>WhatsApp check-ins</li>
-          <li>Progress tracking</li>
-        </ul>
-        <a href="https://wa.me/918830067403?text=Hi%20Shane!%20I%27m%20interested%20in%20the%20Basic%20Protocol%20%28%E2%82%B96000%29."
-           target="_blank" rel="noopener" class="pkg-cta pkg-cta-dark">Start Basic →</a>
-      </div>
-      <div class="pkg-card featured">
-        <div class="pkg-badge">Most Popular</div>
-        <div class="pkg-name">Premium Protocol</div>
-        <div class="pkg-price">₹9K</div>
-        <div class="pkg-period">per month</div>
-        <ul class="pkg-features">
-          <li>12 sessions / month</li>
-          <li>Dance + fitness fusion</li>
-          <li>Full nutrition plan</li>
-          <li>Daily accountability</li>
-          <li>Weekly video reviews</li>
-          <li>Priority scheduling</li>
-        </ul>
-        <a href="https://wa.me/918830067403?text=Hi%20Shane!%20I%27m%20interested%20in%20the%20Premium%20Protocol%20%28%E2%82%B99000%29."
-           target="_blank" rel="noopener" class="pkg-cta pkg-cta-light">Start Premium →</a>
-      </div>
-      <div class="pkg-card">
-        <div class="pkg-name">Pro Package</div>
-        <div class="pkg-price">₹14K</div>
-        <div class="pkg-period">per month</div>
-        <ul class="pkg-features">
-          <li>Unlimited sessions</li>
-          <li>Full dance curriculum</li>
-          <li>Elite nutrition coaching</li>
-          <li>24/7 direct access</li>
-          <li>Competition prep</li>
-          <li>Choreography included</li>
-        </ul>
-        <a href="https://wa.me/918830067403?text=Hi%20Shane!%20I%27m%20interested%20in%20the%20Pro%20Package%20%28%E2%82%B914000%29."
-           target="_blank" rel="noopener" class="pkg-cta pkg-cta-dark">Start Pro →</a>
-      </div>
-    </div>
-    <p style="text-align:center;font-size:0.72rem;color:rgba(255,255,255,0.2);letter-spacing:0.1em;margin-top:2rem;">
-      All packages include a free 15-min WhatsApp consultation &nbsp;·&nbsp; Workshop bookings are separately quoted
-    </p>
-  </div>
-</div>
+.hero-title {
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: clamp(3.2rem, 11vw, 8.5rem);
+  line-height: 0.9; color: #fff; letter-spacing: 0.04em;
+  margin-bottom: 1rem;
+}
+.hero-title-outline { color: transparent; -webkit-text-stroke: 1.5px rgba(255,255,255,0.45); }
 
-<!-- BMI CALCULATOR -->
-<hr class="rule"/>
-<div id="bmi" style="background:#fff;padding:6rem 1.5rem;">
-  <div style="max-width:1100px;margin:0 auto;">
-    <p class="section-label reveal" style="color:rgba(0,0,0,0.35);">Free Tool</p>
-    <h2 class="section-title reveal" style="color:#000;margin-bottom:0.5rem;">Calculate Your BMI</h2>
-    <p class="reveal" style="font-size:0.85rem;color:rgba(0,0,0,0.4);letter-spacing:0.1em;margin-bottom:3rem;">Know your baseline. Build from there.</p>
-    <div class="bmi-wrap reveal" style="box-shadow:0 0 0 1px rgba(0,0,0,0.08);">
-      <div class="bmi-title">BMI Calculator</div>
-      <div class="bmi-sub">Enter your details below</div>
-      <div class="bmi-inputs">
-        <div class="bmi-field"><label for="bmi-height">Height (cm)</label><input type="number" id="bmi-height" placeholder="e.g. 175" min="100" max="250"/></div>
-        <div class="bmi-field"><label for="bmi-weight">Weight (kg)</label><input type="number" id="bmi-weight" placeholder="e.g. 70" min="30" max="300"/></div>
-        <div class="bmi-field"><label for="bmi-age">Age</label><input type="number" id="bmi-age" placeholder="e.g. 28" min="10" max="100"/></div>
-        <div class="bmi-field">
-          <label for="bmi-gender">Gender</label>
-          <select id="bmi-gender">
-            <option value="any">Prefer not to say</option>
-            <option value="male">Male</option>
-            <option value="female">Female</option>
-          </select>
-        </div>
-      </div>
-      <button class="bmi-btn" id="bmiBtn">Calculate BMI →</button>
-      <div class="bmi-result" id="bmi-result">
-        <div class="bmi-number" id="bmi-num">—</div>
-        <div class="bmi-category" id="bmi-cat">—</div>
-        <div class="bmi-bar-wrap"><div class="bmi-bar-fill" id="bmi-bar" style="width:0%"></div></div>
-        <p class="bmi-tip" id="bmi-tip"></p>
-        <a href="https://wa.me/918830067403?text=Hi%20Shane!%20I%20just%20calculated%20my%20BMI%20and%20want%20to%20start%20training."
-           target="_blank" rel="noopener"
-           style="display:inline-block;margin-top:1.5rem;font-weight:700;font-size:0.8rem;letter-spacing:0.15em;text-transform:uppercase;background:#000;color:#fff;padding:0.85rem 2rem;text-decoration:none;">
-          Train With Shane →
-        </a>
-      </div>
-    </div>
-  </div>
-</div>
+.hero-role {
+  font-family: 'Space Mono', monospace;
+  font-size: clamp(0.65rem, 1.8vw, 0.85rem);
+  letter-spacing: 0.22em; text-transform: uppercase;
+  color: rgba(255,255,255,0.4);
+  border-left: 2px solid var(--gold); padding-left: 0.9rem;
+  display: inline-block; text-align: left;
+  margin-bottom: 1.25rem;
+}
 
-<!-- MEDIA GALLERY -->
-<hr class="rule"/>
-<div id="media" style="background:#000;">
-  <div class="section" style="padding-bottom:0;">
-    <p class="section-label reveal">In Action</p>
-    <h2 class="section-title reveal">Media Gallery</h2>
-    <p class="section-sub reveal">Photos and videos from workshops, competitions, and training sessions.</p>
-  </div>
-  <div class="section-inner">
-    <div class="media-tabs" role="tablist" aria-label="Media categories">
-      <button class="media-tab active" role="tab" aria-selected="true"  data-tab="photos">Photos</button>
-      <button class="media-tab"        role="tab" aria-selected="false" data-tab="videos">Videos</button>
-      <button class="media-tab"        role="tab" aria-selected="false" data-tab="competitions">Competitions</button>
-    </div>
-    <div class="media-panel active" id="tab-photos" role="tabpanel">
-      <div class="media-grid">
-        <!-- REPLACE each img-ph with an actual <img> tag -->
-        <div class="media-item"><img src="assets/images/gallery/photo-01.jpg" alt="Shane Mendes in action" loading="lazy" style="width:100%;height:100%;object-fit:cover;display:block;" /></div>
-        <div class="media-item"><img src="assets/images/gallery/photo-02.jpg" alt="Shane Mendes in action" loading="lazy" style="width:100%;height:100%;object-fit:cover;display:block;" /></div>
-        <div class="media-item"><img src="assets/images/gallery/photo-03.jpg" alt="Shane Mendes in action" loading="lazy" style="width:100%;height:100%;object-fit:cover;display:block;" /></div>
-        <div class="media-item"><img src="assets/images/gallery/photo-04.jpg" alt="Shane Mendes in action" loading="lazy" style="width:100%;height:100%;object-fit:cover;display:block;" /></div>
-        <div class="media-item"><img src="assets/images/gallery/photo-05.jpg" alt="Shane Mendes in action" loading="lazy" style="width:100%;height:100%;object-fit:cover;display:block;" /></div>
-        <div class="media-item"><img src="assets/images/gallery/photo-06.jpg" alt="Shane Mendes in action" loading="lazy" style="width:100%;height:100%;object-fit:cover;display:block;" /></div>
-        <div class="media-item"><img src="assets/images/gallery/photo-07.jpg" alt="Shane Mendes in action" loading="lazy" style="width:100%;height:100%;object-fit:cover;display:block;" /></div>
-        <div class="media-item"><img src="assets/images/gallery/photo-08.jpg" alt="Shane Mendes in action" loading="lazy" style="width:100%;height:100%;object-fit:cover;display:block;" /></div>
-      </div>
-    </div>
-    <div class="media-panel" id="tab-videos" role="tabpanel" hidden>
-      <div class="video-grid">
-        <!-- REPLACE with: <iframe src="https://www.youtube.com/embed/VIDEO_ID" title="..." loading="lazy" allowfullscreen></iframe> -->
-        <div class="video-ph"><div class="video-ph-inner"><div class="video-play" aria-hidden="true">▶</div><p>Performance Reel<br/><span>YouTube: Add VIDEO_ID_1</span></p></div></div>
-        <div class="video-ph"><div class="video-ph-inner"><div class="video-play" aria-hidden="true">▶</div><p>Workshop Highlights<br/><span>YouTube: Add VIDEO_ID_2</span></p></div></div>
-        <div class="video-ph"><div class="video-ph-inner"><div class="video-play" aria-hidden="true">▶</div><p>Training Session BTS<br/><span>YouTube: Add VIDEO_ID_3</span></p></div></div>
-        <div class="video-ph"><div class="video-ph-inner"><div class="video-play" aria-hidden="true">▶</div><p>BOTY India Highlights<br/><span>YouTube: Add VIDEO_ID_4</span></p></div></div>
-      </div>
-    </div>
-    <div class="media-panel" id="tab-competitions" role="tabpanel" hidden>
-      <div class="media-grid">
-        <div class="media-item"><img src="assets/images/gallery/comp-boty.jpg" alt="Shane Mendes" loading="lazy" style="width:100%;height:100%;object-fit:cover;display:block;" /></div>
-        <div class="media-item"><img src="assets/images/gallery/comp-redbull.jpg" alt="Shane Mendes" loading="lazy" style="width:100%;height:100%;object-fit:cover;display:block;" /></div>
-        <div class="media-item"><img src="assets/images/gallery/comp-local.jpg" alt="Shane Mendes" loading="lazy" style="width:100%;height:100%;object-fit:cover;display:block;" /></div>
-        <div class="media-item"><img src="assets/images/gallery/comp-perf.jpg" alt="Shane Mendes" loading="lazy" style="width:100%;height:100%;object-fit:cover;display:block;" /></div>
-      </div>
-    </div>
-    <p style="text-align:center;margin-top:2rem;font-size:0.72rem;letter-spacing:0.18em;text-transform:uppercase;color:rgba(255,255,255,0.2);">
-      More on Instagram &nbsp;
-      <a href="https://instagram.com/trainwidshane" target="_blank" rel="noopener" style="color:rgba(255,255,255,0.4);text-decoration:none;border-bottom:1px solid rgba(255,255,255,0.2);">@trainwidshane</a>
-    </p>
-  </div>
-</div>
+.hero-desc {
+  font-size: 0.95rem; color: rgba(255,255,255,0.5);
+  line-height: 1.8; max-width: 52ch; margin: 0 auto 2rem;
+}
 
-<!-- TESTIMONIALS -->
-<hr class="rule"/>
-<div id="testimonials" style="background:#050505;">
-  <div class="section" style="padding-bottom:0;">
-    <p class="section-label reveal">Real People. Real Results.</p>
-    <h2 class="section-title reveal">Client Transformations</h2>
-    <p class="section-sub reveal" style="margin-bottom:0;">Add your client photos to <strong style="color:rgba(255,255,255,0.6);">assets/images/</strong> named <strong style="color:rgba(255,255,255,0.6);">client-1.jpg</strong> through <strong style="color:rgba(255,255,255,0.6);">client-6.jpg</strong> to show real faces here.</p>
-  </div>
-  <div class="section-inner">
-    <div class="testi-grid">
+.hero-ctas {
+  display: flex; gap: 1rem; flex-wrap: wrap; justify-content: center;
+  margin-bottom: 2rem;
+}
 
-      <div class="testi-card testi-featured reveal">
-        <div class="stars" aria-label="5 stars">★★★★★</div>
-        <div class="testi-q" aria-hidden="true">"</div>
-        <p class="testi-text">Shane completely changed how I see fitness. I came in wanting to lose weight — 8 months later I am running, doing push-ups I never thought possible, and I have lost 14kg. I actually enjoy training now. That is the Shane effect.</p>
-        <div class="testi-author">
-          <img src="assets/images/client-1.jpg" alt="Client" class="testi-avatar" loading="lazy"
-               onerror="this.style.display='none';this.nextElementSibling.style.display='flex';" />
-          <div class="testi-avatar" style="display:none;">1</div>
-          <div><div class="testi-name">Personal Training Client</div><div class="testi-role">Goa, India</div></div>
-        </div>
-      </div>
+.hero-tags {
+  display: flex; flex-wrap: wrap; gap: 0.4rem; justify-content: center;
+}
 
-      <div class="testi-card reveal">
-        <div class="stars" aria-label="5 stars">★★★★★</div>
-        <div class="testi-q" aria-hidden="true">"</div>
-        <p class="testi-text">Shane's workshop was the most engaged I have ever seen our students. Every single kid participated. We have already booked him for next semester.</p>
-        <div class="testi-author">
-          <img src="assets/images/client-2.jpg" alt="Client" class="testi-avatar" loading="lazy"
-               onerror="this.style.display='none';this.nextElementSibling.style.display='flex';" />
-          <div class="testi-avatar" style="display:none;">2</div>
-          <div><div class="testi-name">School Principal</div><div class="testi-role">North Goa</div></div>
-        </div>
-      </div>
+.scroll-hint {
+  position: absolute; bottom: 2rem; left: 50%; transform: translateX(-50%);
+  display: flex; flex-direction: column; align-items: center; gap: 0.4rem;
+  text-decoration: none;
+}
+.scroll-hint span { font-family: 'Space Mono', monospace; font-size: 0.6rem; letter-spacing: 0.25em; text-transform: uppercase; color: rgba(255,255,255,0.2); }
+.scroll-hint div { width: 1px; height: 36px; background: linear-gradient(to bottom, rgba(255,255,255,0.25), transparent); animation: scrollLine 2s ease-in-out infinite; }
 
-      <div class="testi-card reveal">
-        <div class="stars" aria-label="5 stars">★★★★★</div>
-        <div class="testi-q" aria-hidden="true">"</div>
-        <p class="testi-text">Our corporate wellness day with Shane was legendary. Engineers, managers, executives — all moving together. People were genuinely connecting in ways our usual team building never achieved.</p>
-        <div class="testi-author">
-          <img src="assets/images/client-3.jpg" alt="Client" class="testi-avatar" loading="lazy"
-               onerror="this.style.display='none';this.nextElementSibling.style.display='flex';" />
-          <div class="testi-avatar" style="display:none;">3</div>
-          <div><div class="testi-name">HR Director</div><div class="testi-role">Tech Company, Goa</div></div>
-        </div>
-      </div>
+/* ── MARQUEE ───────────────────────────────────────── */
+.marquee-wrap {
+  overflow: hidden;
+  border-top: 1px solid var(--border); border-bottom: 1px solid var(--border);
+  padding: 0.85rem 0; background: #000;
+}
+.marquee-inner { display: flex; width: max-content; animation: marquee 28s linear infinite; }
+.marquee-item { font-family: 'Bebas Neue', sans-serif; font-size: 1rem; letter-spacing: 0.2em; color: rgba(255,255,255,0.22); padding: 0 2rem; white-space: nowrap; }
+.marquee-dot { color: rgba(255,255,255,0.4); margin-left: 2rem; }
 
-      <div class="testi-card reveal">
-        <div class="stars" aria-label="5 stars">★★★★★</div>
-        <div class="testi-q" aria-hidden="true">"</div>
-        <p class="testi-text">I started breakdance with Shane at 34, convinced I was too old. Within 6 months I performed at a local event. Shane makes you believe in yourself before you believe it yourself.</p>
-        <div class="testi-author">
-          <img src="assets/images/client-4.jpg" alt="Client" class="testi-avatar" loading="lazy"
-               onerror="this.style.display='none';this.nextElementSibling.style.display='flex';" />
-          <div class="testi-avatar" style="display:none;">4</div>
-          <div><div class="testi-name">Breakdance Student</div><div class="testi-role">Goa, India</div></div>
-        </div>
-      </div>
+/* ── STATS STRIP ───────────────────────────────────── */
+.stats-strip {
+  background: var(--ink-90);
+  border-bottom: 1px solid var(--border);
+  padding: 2.5rem 1.5rem;
+}
+.stats-inner {
+  max-width: var(--max-w); margin: 0 auto;
+  display: flex; flex-wrap: wrap; align-items: center; justify-content: space-around; gap: 1rem;
+}
+.stat-block { display: flex; flex-direction: column; align-items: center; gap: 0.2rem; padding: 0.5rem 1.5rem; }
+.stat-divider { width: 1px; height: 40px; background: var(--border); flex-shrink: 0; }
+.stat-num { font-family: 'Bebas Neue', sans-serif; font-size: 2.8rem; line-height: 1; color: #fff; letter-spacing: 0.04em; }
+.stat-sup { font-size: 1.4rem; color: var(--gold); }
+.stat-lbl { font-family: 'Space Mono', monospace; font-size: 0.62rem; letter-spacing: 0.14em; text-transform: uppercase; color: var(--mid); }
 
-      <div class="testi-card reveal">
-        <div class="stars" aria-label="5 stars">★★★★★</div>
-        <div class="testi-q" aria-hidden="true">"</div>
-        <p class="testi-text">Shane's online coaching is the real deal. Lost 9kg and feel stronger than I did at 25. He checks in regularly and adjusts when life gets in the way. Worth every rupee.</p>
-        <div class="testi-author">
-          <img src="assets/images/client-5.jpg" alt="Client" class="testi-avatar" loading="lazy"
-               onerror="this.style.display='none';this.nextElementSibling.style.display='flex';" />
-          <div class="testi-avatar" style="display:none;">5</div>
-          <div><div class="testi-name">Online Coaching Client</div><div class="testi-role">Mumbai</div></div>
-        </div>
-      </div>
+/* About stat row (in-section) */
+.stat-row { display: flex; gap: 2.5rem; margin-top: 2.5rem; flex-wrap: wrap; }
+.stat-num-sm { font-family: 'Bebas Neue', sans-serif; font-size: 3.5rem; color: #fff; line-height: 1; }
 
-      <div class="testi-card reveal">
-        <div class="stars" aria-label="5 stars">★★★★★</div>
-        <div class="testi-q" aria-hidden="true">"</div>
-        <p class="testi-text">Shane choreographed our brand launch performance and it was breathtaking. He understood our brand identity and translated it into movement. Guests were in awe.</p>
-        <div class="testi-author">
-          <img src="assets/images/client-6.jpg" alt="Client" class="testi-avatar" loading="lazy"
-               onerror="this.style.display='none';this.nextElementSibling.style.display='flex';" />
-          <div class="testi-avatar" style="display:none;">6</div>
-          <div><div class="testi-name">Brand Marketing Manager</div><div class="testi-role">Goa, India</div></div>
-        </div>
-      </div>
+/* ── ABOUT ─────────────────────────────────────────── */
+.about-grid { display: grid; grid-template-columns: 1fr; gap: 3rem; margin-top: 3.5rem; }
+@media (min-width: 768px) { .about-grid { grid-template-columns: 1fr 1fr; gap: 5rem; align-items: start; } }
 
-    </div>
-    <div style="text-align:center;margin-top:3rem;">
-      <a href="https://wa.me/918830067403?text=Hi%20Shane!%20I%27m%20ready%20to%20start%20my%20transformation."
-         target="_blank" rel="noopener" class="btn-primary">Ready to Start Your Transformation? →</a>
-    </div>
-  </div>
-</div>
+/* ── WHY SHANE ─────────────────────────────────────── */
+.why-grid {
+  display: grid; grid-template-columns: repeat(3, 1fr);
+  gap: 1px; background: var(--border);
+  border: 1px solid var(--border); margin-top: 3.5rem;
+}
+.why-card { background: var(--ink-90); padding: 2.5rem 2rem; transition: background .25s; }
+.why-card:hover { background: #111; }
 
-<!-- INSTAGRAM SHOWCASE -->
-<hr class="rule"/>
-<div id="instagram" style="background:#000;">
-  <div class="section" style="padding-bottom:0;">
-    <p class="section-label reveal">Follow the Journey</p>
-    <h2 class="section-title reveal">
-      <a href="https://instagram.com/trainwidshane" target="_blank" rel="noopener" class="ig-handle">@trainwidshane</a>
-    </h2>
-    <p class="section-sub reveal">Daily training, behind the scenes, and movement inspiration.</p>
-  </div>
-  <div class="section-inner">
-    <div class="ig-grid" aria-label="Instagram feed preview">
-      <!-- REPLACE each ig-tile inner div with: <img src="assets/images/ig/post-XX.jpg" alt="Shane Instagram post" loading="lazy" /> -->
-      <a href="https://instagram.com/trainwidshane" target="_blank" rel="noopener" class="ig-tile" aria-label="Instagram post 1"><img src="assets/images/ig/post-01.jpg" alt="Shane Mendes Instagram" loading="lazy" style="width:100%;height:100%;object-fit:cover;display:block;" /><div class="ig-overlay" aria-hidden="true">♡</div></a>
-      <a href="https://instagram.com/trainwidshane" target="_blank" rel="noopener" class="ig-tile" aria-label="Instagram post 2"><img src="assets/images/ig/post-02.jpg" alt="Shane Mendes Instagram" loading="lazy" style="width:100%;height:100%;object-fit:cover;display:block;" /><div class="ig-overlay" aria-hidden="true">♡</div></a>
-      <a href="https://instagram.com/trainwidshane" target="_blank" rel="noopener" class="ig-tile" aria-label="Instagram post 3"><img src="assets/images/ig/post-03.jpg" alt="Shane Mendes Instagram" loading="lazy" style="width:100%;height:100%;object-fit:cover;display:block;" /><div class="ig-overlay" aria-hidden="true">♡</div></a>
-      <a href="https://instagram.com/trainwidshane" target="_blank" rel="noopener" class="ig-tile" aria-label="Instagram post 4"><img src="assets/images/ig/post-04.jpg" alt="Shane Mendes Instagram" loading="lazy" style="width:100%;height:100%;object-fit:cover;display:block;" /><div class="ig-overlay" aria-hidden="true">♡</div></a>
-      <a href="https://instagram.com/trainwidshane" target="_blank" rel="noopener" class="ig-tile" aria-label="Instagram post 5"><img src="assets/images/ig/post-05.jpg" alt="Shane Mendes Instagram" loading="lazy" style="width:100%;height:100%;object-fit:cover;display:block;" /><div class="ig-overlay" aria-hidden="true">♡</div></a>
-      <a href="https://instagram.com/trainwidshane" target="_blank" rel="noopener" class="ig-tile" aria-label="Instagram post 6"><img src="assets/images/ig/post-06.jpg" alt="Shane Mendes Instagram" loading="lazy" style="width:100%;height:100%;object-fit:cover;display:block;" /><div class="ig-overlay" aria-hidden="true">♡</div></a>
-    </div>
-    <div style="text-align:center;margin-top:2rem;">
-      <a href="https://instagram.com/trainwidshane" target="_blank" rel="noopener" class="btn-ghost">Follow @trainwidshane on Instagram →</a>
-    </div>
-  </div>
-</div>
+.why-icon { width: 44px; height: 44px; color: var(--gold); margin-bottom: 1.25rem; }
+.why-icon svg { width: 100%; height: 100%; }
+.why-title { font-family: 'Bebas Neue', sans-serif; font-size: 1.5rem; letter-spacing: 0.04em; color: #fff; margin-bottom: 0.6rem; }
+.why-desc { font-size: 0.85rem; color: rgba(255,255,255,0.45); line-height: 1.75; margin-bottom: 1rem; }
+.why-badge {
+  font-family: 'Space Mono', monospace; font-size: 0.6rem; letter-spacing: 0.14em; text-transform: uppercase;
+  border: 1px solid rgba(201,168,76,0.4); color: var(--gold); padding: 0.2rem 0.6rem;
+  display: inline-block;
+}
 
-<!-- FINAL CTA -->
-<hr class="rule"/>
-<div class="final-cta" id="contact">
-  <div style="max-width:680px;margin:0 auto;">
-    <p class="section-label" style="color:rgba(0,0,0,0.35);">Let's Make It Happen</p>
-    <h2 class="section-title" style="color:#000;">Your Movement<br/>Starts Now.</h2>
-    <p class="cta-sub">One message is all it takes. No commitment, no pressure — just a real conversation about what you need.</p>
-    <div class="cta-options">
-      <a href="https://wa.me/918830067403?text=Hi%20Shane!%20I%27d%20like%20to%20book%20a%20free%20consultation."  target="_blank" rel="noopener" class="cta-opt"><div class="cta-opt-icon" aria-hidden="true">💬</div><div><strong>Free Consultation</strong><span>15-min WhatsApp chat about your goals</span></div></a>
-      <a href="https://wa.me/918830067403?text=Hi%20Shane!%20I%27d%20like%20to%20enquire%20about%20coaching." target="_blank" rel="noopener" class="cta-opt"><div class="cta-opt-icon" aria-hidden="true">💪</div><div><strong>Coaching Enquiry</strong><span>Personal training, online coaching &amp; nutrition</span></div></a>
-      <a href="https://wa.me/918830067403?text=Hi%20Shane!%20I%27d%20like%20to%20book%20a%20workshop."          target="_blank" rel="noopener" class="cta-opt"><div class="cta-opt-icon" aria-hidden="true">📅</div><div><strong>Workshop Booking</strong><span>Schools, corporates, events &amp; groups</span></div></a>
-      <a href="https://wa.me/918830067403?text=Hi%20Shane!%20I%27d%20like%20to%20book%20you%20for%20a%20performance." target="_blank" rel="noopener" class="cta-opt"><div class="cta-opt-icon" aria-hidden="true">🎭</div><div><strong>Performance Booking</strong><span>Events, shows &amp; brand activations</span></div></a>
-    </div>
-    <a href="https://wa.me/918830067403?text=Hi%20Shane!%20I%27d%20like%20to%20start%20my%20StreetFit%20journey."
-       target="_blank" rel="noopener" class="btn-wa" style="margin-top:2.5rem;font-size:1rem;padding:1.1rem 3rem;">
-      <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
-      Message Shane on WhatsApp
-    </a>
-    <a href="https://instagram.com/trainwidshane" target="_blank" rel="noopener" style="display:block;margin-top:1.25rem;font-size:0.78rem;letter-spacing:0.12em;text-transform:uppercase;color:rgba(0,0,0,0.35);text-decoration:none;">Instagram @trainwidshane ↗</a>
-    <p style="font-size:0.72rem;color:rgba(0,0,0,0.25);margin-top:0.5rem;">+91 88300 67403</p>
-  </div>
-</div>
+/* ── ACHIEVEMENTS ──────────────────────────────────── */
+.achievements-grid { display: grid; grid-template-columns: 1.5fr 1fr 1fr; gap: 1.5rem; margin-top: 3.5rem; }
+.achievement-card { background: var(--ink-80); border: 1px solid var(--border); overflow: hidden; }
+.achievement-featured { display: flex; flex-direction: column; }
 
-<!-- FOOTER -->
-<footer role="contentinfo">
-  <div class="footer-inner">
-    <div class="footer-brand">STREETFITMOVEMENT</div>
-    <nav class="footer-nav" aria-label="Footer navigation">
-      <a href="#about"        class="footer-link">About</a>
-      <a href="#why-shane"    class="footer-link">Why Shane</a>
-      <a href="#offerings"    class="footer-link">Training</a>
-      <a href="#workshops"    class="footer-link">Workshops</a>
-      <a href="#packages"     class="footer-link">Packages</a>
-      <a href="#testimonials" class="footer-link">Results</a>
-      <a href="#media"        class="footer-link">Media</a>
-    </nav>
-    <div class="footer-social">
-      <a href="https://instagram.com/trainwidshane" target="_blank" rel="noopener" class="footer-social-link" aria-label="Instagram">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1" fill="currentColor" stroke="none"/></svg>
-        @trainwidshane
-      </a>
-      <a href="https://wa.me/918830067403" target="_blank" rel="noopener" class="footer-social-link" aria-label="WhatsApp">
-        <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
-        +91 88300 67403
-      </a>
-    </div>
-  </div>
-  <div class="footer-bottom">
-    <p class="footer-copy">© <span id="year"></span> Shane Mendes · STREETFITMOVEMENT · Goa, India · All rights reserved</p>
-    <p class="footer-seo">Breakdance Goa &nbsp;·&nbsp; Fitness Trainer Goa &nbsp;·&nbsp; Dance Workshops Goa &nbsp;·&nbsp; Online Coaching India</p>
-  </div>
-</footer>
+.achievement-img { height: 280px; overflow: hidden; }
+.achievement-img .img-ph { height: 100%; min-height: unset; }
+.achievement-img-sm { height: 180px; }
+.achievement-body { padding: 1.5rem; flex: 1; display: flex; flex-direction: column; gap: 0.75rem; }
+.achievement-badge {
+  display: inline-block; background: var(--gold); color: #000;
+  font-family: 'Space Mono', monospace; font-size: 0.6rem; font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase;
+  padding: 0.25rem 0.65rem; align-self: flex-start;
+}
+.achievement-title { font-family: 'Bebas Neue', sans-serif; font-size: 1.6rem; letter-spacing: 0.04em; color: #fff; }
+.achievement-desc { font-size: 0.85rem; color: rgba(255,255,255,0.45); line-height: 1.7; flex: 1; }
 
-<!-- WhatsApp floating button -->
-<a href="https://wa.me/918830067403?text=Hi%20Shane!" class="wa-float" target="_blank" rel="noopener" aria-label="Chat with Shane on WhatsApp">
-  <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
-  <span class="wa-pulse" aria-hidden="true"></span>
-</a>
+/* ── OFFERINGS ─────────────────────────────────────── */
+.offering-grid { display: grid; grid-template-columns: 1fr; gap: 1px; background: var(--border); }
+@media (min-width: 768px) { .offering-grid { grid-template-columns: 1fr 1fr; } }
 
-<script src="app.js"></script>
-</body>
-</html>
+.offering-card { background: #000; padding: 2.5rem 2rem; transition: background .25s; display: flex; flex-direction: column; gap: 1rem; }
+.offering-card:hover { background: var(--ink-80); }
+.offering-icon { width: 40px; height: 40px; color: rgba(255,255,255,0.3); }
+.offering-icon svg { width: 100%; height: 100%; }
+.offering-title { font-family: 'Bebas Neue', sans-serif; font-size: 2rem; letter-spacing: 0.06em; color: #fff; }
+.offering-sub { font-family: 'Space Mono', monospace; font-size: 0.65rem; letter-spacing: 0.2em; text-transform: uppercase; color: var(--mid); }
+.style-tags { display: flex; flex-wrap: wrap; gap: 0.5rem; }
+.style-tag {
+  font-family: 'Space Mono', monospace; font-size: 0.65rem; letter-spacing: 0.1em; text-transform: uppercase;
+  padding: 0.3rem 0.8rem; border: 1px solid rgba(255,255,255,0.15); color: rgba(255,255,255,0.45);
+  transition: all .2s; cursor: default;
+}
+.style-tag:hover { border-color: #fff; color: #fff; }
+.offering-list { list-style: none; flex: 1; }
+.offering-list li { font-size: 0.85rem; color: rgba(255,255,255,0.45); padding: 0.45rem 0; border-bottom: 1px solid rgba(255,255,255,0.05); display: flex; gap: 0.6rem; }
+.offering-list li::before { content: '—'; color: rgba(255,255,255,0.18); flex-shrink: 0; }
+
+/* ── WORKSHOPS ─────────────────────────────────────── */
+.workshops-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1px; background: var(--border); margin-bottom: 1.5rem; }
+.workshop-card { background: var(--ink-90); display: flex; flex-direction: column; transition: background .25s; }
+.workshop-card:hover { background: #111; }
+.workshop-img { overflow: hidden; flex-shrink: 0; }
+.workshop-img .img-ph { height: 180px; min-height: unset; }
+.workshop-img img { width: 100%; height: 180px; object-fit: cover; }
+.workshop-body { padding: 1.75rem; display: flex; flex-direction: column; gap: 0.65rem; flex: 1; }
+.workshop-cat {
+  font-family: 'Space Mono', monospace; font-size: 0.6rem; letter-spacing: 0.15em; text-transform: uppercase;
+  color: var(--gold); border: 1px solid rgba(201,168,76,0.3); padding: 0.2rem 0.55rem; align-self: flex-start;
+}
+.workshop-title { font-family: 'Bebas Neue', sans-serif; font-size: 1.4rem; letter-spacing: 0.04em; color: #fff; }
+.workshop-desc { font-size: 0.82rem; color: rgba(255,255,255,0.4); line-height: 1.7; }
+.workshop-list { list-style: none; flex: 1; margin: 0.25rem 0; }
+.workshop-list li { font-size: 0.8rem; color: rgba(255,255,255,0.35); padding: 0.3rem 0 0.3rem 0.9rem; position: relative; }
+.workshop-list li::before { content: '·'; position: absolute; left: 0.1rem; color: var(--mid); }
+
+.workshops-cta-strip {
+  background: #0a0a0a; border: 1px solid var(--border);
+  padding: 2rem 2.5rem;
+  display: flex; align-items: center; justify-content: space-between; gap: 2rem; flex-wrap: wrap;
+}
+.workshops-cta-strip p { font-size: 0.95rem; color: rgba(255,255,255,0.45); max-width: 48ch; }
+
+/* ── PACKAGES ──────────────────────────────────────── */
+.pkg-grid { display: grid; grid-template-columns: 1fr; gap: 1px; background: var(--border); }
+@media (min-width: 768px) { .pkg-grid { grid-template-columns: repeat(3, 1fr); } }
+
+.pkg-card { background: #000; padding: 2.5rem 2rem; display: flex; flex-direction: column; position: relative; transition: background .25s; }
+.pkg-card:hover { background: var(--ink-80); }
+.pkg-card.featured { background: #fff; }
+.pkg-card.featured:hover { background: #f0f0f0; }
+.pkg-badge { position: absolute; top: -1px; right: 1.5rem; font-family: 'Space Mono', monospace; font-size: 0.6rem; font-weight: 700; letter-spacing: 0.18em; text-transform: uppercase; background: #000; color: #fff; padding: 0.3rem 0.8rem; }
+.pkg-name { font-family: 'Space Mono', monospace; font-size: 0.68rem; letter-spacing: 0.25em; text-transform: uppercase; color: rgba(255,255,255,0.3); margin-bottom: 1rem; }
+.pkg-card.featured .pkg-name { color: rgba(0,0,0,0.4); }
+.pkg-price { font-family: 'Bebas Neue', sans-serif; font-size: 4rem; line-height: 1; color: #fff; margin-bottom: 0.2rem; }
+.pkg-card.featured .pkg-price { color: #000; }
+.pkg-period { font-family: 'Space Mono', monospace; font-size: 0.72rem; color: rgba(255,255,255,0.3); margin-bottom: 2rem; }
+.pkg-card.featured .pkg-period { color: rgba(0,0,0,0.4); }
+.pkg-features { list-style: none; flex: 1; margin-bottom: 2rem; }
+.pkg-features li { font-size: 0.85rem; padding: 0.55rem 0; border-bottom: 1px solid rgba(255,255,255,0.07); color: rgba(255,255,255,0.5); display: flex; gap: 0.6rem; }
+.pkg-card.featured .pkg-features li { border-bottom-color: rgba(0,0,0,0.1); color: rgba(0,0,0,0.6); }
+.pkg-features li::before { content: '✓'; color: #fff; flex-shrink: 0; }
+.pkg-card.featured .pkg-features li::before { color: #000; }
+.pkg-cta { font-family: 'Space Mono', monospace; font-weight: 700; font-size: 0.72rem; letter-spacing: 0.14em; text-transform: uppercase; padding: 0.9rem; text-align: center; text-decoration: none; display: block; transition: all .2s; }
+.pkg-cta-dark { color: #fff; border: 1px solid rgba(255,255,255,0.22); }
+.pkg-cta-dark:hover { border-color: #fff; background: rgba(255,255,255,0.04); }
+.pkg-cta-light { background: #000; color: #fff; border: 1px solid #000; }
+.pkg-cta-light:hover { background: #1a1a1a; }
+
+/* ── BMI ───────────────────────────────────────────── */
+.bmi-wrap { background: #fff; color: #000; padding: 3.5rem 2rem; max-width: 600px; margin: 0 auto; }
+.bmi-title { font-family: 'Bebas Neue', sans-serif; font-size: 3rem; letter-spacing: 0.06em; color: #000; margin-bottom: 0.25rem; }
+.bmi-sub { font-family: 'Space Mono', monospace; font-size: 0.72rem; letter-spacing: 0.2em; text-transform: uppercase; color: rgba(0,0,0,0.4); margin-bottom: 2.5rem; }
+.bmi-inputs { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; margin-bottom: 1.5rem; }
+.bmi-field label { font-family: 'Space Mono', monospace; font-size: 0.65rem; letter-spacing: 0.18em; text-transform: uppercase; color: rgba(0,0,0,0.4); display: block; margin-bottom: 0.4rem; }
+.bmi-field input, .bmi-field select {
+  width: 100%; padding: 0.85rem 1rem; background: #000; color: #fff;
+  border: 1px solid rgba(0,0,0,0.15); font-family: 'Space Grotesk', sans-serif; font-size: 1rem;
+  outline: none; transition: border-color .2s; appearance: none;
+}
+.bmi-field input:focus, .bmi-field select:focus { border-color: #000; }
+.bmi-btn { width: 100%; padding: 1rem; background: #000; color: #fff; border: none; font-family: 'Space Grotesk', sans-serif; font-weight: 700; font-size: 0.85rem; letter-spacing: 0.15em; text-transform: uppercase; cursor: pointer; transition: background .2s; margin-top: 0.5rem; }
+.bmi-btn:hover { background: #222; }
+.bmi-result { margin-top: 2rem; padding: 1.5rem; border: 1px solid rgba(0,0,0,0.12); display: none; }
+.bmi-result.show { display: block; }
+.bmi-number { font-family: 'Bebas Neue', sans-serif; font-size: 4rem; line-height: 1; color: #000; }
+.bmi-category { font-family: 'Space Mono', monospace; font-size: 0.78rem; letter-spacing: 0.2em; text-transform: uppercase; color: rgba(0,0,0,0.5); margin-top: 0.25rem; }
+.bmi-bar-wrap { margin: 1.25rem 0; height: 5px; background: rgba(0,0,0,0.1); }
+.bmi-bar-fill { height: 100%; background: #000; transition: width 0.6s ease; }
+.bmi-tip { font-size: 0.82rem; color: rgba(0,0,0,0.55); line-height: 1.75; margin-top: 1rem; }
+
+/* ── MEDIA GALLERY ─────────────────────────────────── */
+.media-tabs { display: flex; gap: 0; border-bottom: 1px solid var(--border); margin-bottom: 2rem; }
+.media-tab {
+  font-family: 'Space Mono', monospace; font-size: 0.7rem; letter-spacing: 0.12em; text-transform: uppercase;
+  color: var(--mid); background: none; border: none; padding: 0.8rem 1.4rem; cursor: pointer;
+  border-bottom: 2px solid transparent; margin-bottom: -1px;
+  transition: color .2s, border-color .2s;
+}
+.media-tab:hover { color: #fff; }
+.media-tab.active { color: #fff; border-bottom-color: var(--gold); }
+.media-panel { display: none; }
+.media-panel.active { display: block; }
+
+.media-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 4px;
+  background: #000;
+}
+@media (min-width: 640px)  { .media-grid { grid-template-columns: repeat(3, 1fr); } }
+@media (min-width: 1024px) { .media-grid { grid-template-columns: repeat(4, 1fr); } }
+.media-item {
+  background: #111;
+  aspect-ratio: 1;
+  position: relative;
+  overflow: hidden;
+  cursor: pointer;
+}
+/* Remove tall class effect — uniform grid, no empty spaces */
+.media-item.tall { grid-row: unset; }
+.media-item img {
+  width: 100%; height: 100%;
+  object-fit: cover; display: block;
+  transition: transform 0.4s ease;
+}
+.media-item:hover img { transform: scale(1.05); }
+.media-overlay { display: none; }
+.media-label { display: none; }
+
+.video-grid { display: grid; grid-template-columns: repeat(2,1fr); gap: 1.5rem; }
+.video-ph { background: var(--ink-80); border: 1px solid var(--border); aspect-ratio: 16/9; overflow: hidden; }
+.video-ph iframe { width: 100%; height: 100%; border: none; }
+.video-ph-inner { width: 100%; height: 100%; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 0.75rem; text-align: center; padding: 1rem; }
+.video-play { width: 50px; height: 50px; background: #fff; color: #000; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 1.1rem; padding-left: 3px; }
+.video-ph-inner p { font-family: 'Space Mono', monospace; font-size: 0.7rem; color: var(--mid); letter-spacing: 0.08em; line-height: 1.6; }
+.video-ph-inner span { color: rgba(255,255,255,0.15); font-size: 0.6rem; }
+
+/* ── TESTIMONIALS ──────────────────────────────────── */
+.testi-grid { display: grid; grid-template-columns: 1fr; gap: 1px; background: var(--border); margin-top: 3.5rem; }
+@media (min-width: 640px)  { .testi-grid { grid-template-columns: repeat(2,1fr); } }
+@media (min-width: 1024px) { .testi-grid { grid-template-columns: repeat(3,1fr); } }
+
+.testi-card { background: #000; padding: 2.5rem 2rem; transition: background .25s; display: flex; flex-direction: column; }
+.testi-card:hover { background: var(--ink-80); }
+.testi-featured { border: 1px solid rgba(201,168,76,0.35); }
+.stars { color: #fff; font-size: 0.7rem; letter-spacing: 0.1em; margin-bottom: 1rem; }
+.testi-q { font-family: 'Bebas Neue', sans-serif; font-size: 3rem; color: rgba(255,255,255,0.07); line-height: 1; margin-bottom: 0.5rem; }
+.testi-text { font-size: 0.88rem; line-height: 1.8; color: rgba(255,255,255,0.52); margin-bottom: 2rem; flex: 1; font-style: italic; }
+.testi-author { display: flex; align-items: center; gap: 0.75rem; margin-top: auto; padding-top: 1.25rem; border-top: 1px solid var(--border); }
+.testi-avatar {
+  width: 48px; height: 48px; border-radius: 50%;
+  background: #111; border: 1px solid rgba(255,255,255,0.12);
+  display: flex; align-items: center; justify-content: center;
+  font-family: 'Space Mono', monospace; font-size: 0.65rem; font-weight: 700;
+  color: var(--mid); flex-shrink: 0;
+  object-fit: cover; overflow: hidden;
+}
+img.testi-avatar {
+  object-fit: cover; display: block;
+  width: 48px; height: 48px; border-radius: 50%;
+  flex-shrink: 0;
+}
+.testi-name { font-weight: 600; font-size: 0.88rem; color: #fff; }
+.testi-role { font-family: 'Space Mono', monospace; font-size: 0.65rem; color: var(--mid); margin-top: 0.1rem; letter-spacing: 0.04em; }
+
+/* ── INSTAGRAM ─────────────────────────────────────── */
+.ig-handle { color: #fff; text-decoration: none; border-bottom: 2px solid var(--gold); padding-bottom: 0.1em; transition: color .2s; }
+.ig-handle:hover { color: var(--gold); }
+.ig-grid { display: grid; grid-template-columns: repeat(6,1fr); gap: 0.5rem; margin-top: 2.5rem; }
+.ig-tile { display: block; position: relative; aspect-ratio: 1; overflow: hidden; text-decoration: none; }
+.ig-tile .img-ph { height: 100%; }
+.ig-tile img { width: 100%; height: 100%; object-fit: cover; transition: transform .4s; }
+.ig-tile:hover img { transform: scale(1.05); }
+.ig-overlay { position: absolute; inset: 0; background: rgba(0,0,0,0.5); display: flex; align-items: center; justify-content: center; opacity: 0; transition: opacity .3s; font-size: 1.4rem; color: #fff; }
+.ig-tile:hover .ig-overlay { opacity: 1; }
+
+/* ── FINAL CTA ─────────────────────────────────────── */
+.final-cta { background: #fff; padding: 6rem 1.5rem; text-align: center; }
+.cta-sub { font-size: 0.92rem; color: rgba(0,0,0,0.45); letter-spacing: 0.04em; margin: 1.5rem 0 2.5rem; line-height: 1.7; }
+
+.cta-options {
+  display: grid; grid-template-columns: repeat(2, 1fr); gap: 0.75rem;
+  margin-bottom: 0.5rem; text-align: left;
+}
+.cta-opt {
+  display: flex; align-items: center; gap: 1rem;
+  padding: 1rem 1.2rem;
+  background: #f5f5f5; border: 1px solid rgba(0,0,0,0.08);
+  text-decoration: none; transition: background .2s, border-color .2s;
+}
+.cta-opt:hover { background: #eee; border-color: rgba(0,0,0,0.2); }
+.cta-opt-icon { font-size: 1.4rem; flex-shrink: 0; }
+.cta-opt strong { display: block; font-size: 0.88rem; color: #000; font-weight: 700; }
+.cta-opt span { display: block; font-size: 0.75rem; color: rgba(0,0,0,0.45); margin-top: 0.15rem; }
+
+/* ── FOOTER ────────────────────────────────────────── */
+footer { background: #000; border-top: 1px solid var(--border); padding: 3rem 1.5rem 0; }
+.footer-inner {
+  max-width: var(--max-w); margin: 0 auto;
+  display: flex; flex-direction: column; align-items: center; gap: 2rem;
+  padding-bottom: 2.5rem; border-bottom: 1px solid var(--border);
+}
+@media (min-width: 768px) {
+  .footer-inner { flex-direction: row; justify-content: space-between; align-items: flex-start; }
+}
+.footer-brand { font-family: 'Bebas Neue', sans-serif; font-size: 1.5rem; letter-spacing: 0.15em; color: rgba(255,255,255,0.18); }
+.footer-nav { display: flex; flex-wrap: wrap; gap: 0.25rem 1.5rem; justify-content: center; }
+.footer-link { font-family: 'Space Mono', monospace; font-size: 0.65rem; letter-spacing: 0.12em; text-transform: uppercase; color: rgba(255,255,255,0.3); text-decoration: none; transition: color .2s; }
+.footer-link:hover { color: #fff; }
+.footer-social { display: flex; flex-direction: column; gap: 0.6rem; }
+.footer-social-link { display: flex; align-items: center; gap: 0.5rem; font-size: 0.78rem; color: rgba(255,255,255,0.3); text-decoration: none; transition: color .2s; }
+.footer-social-link svg { width: 16px; height: 16px; flex-shrink: 0; }
+.footer-social-link:hover { color: #fff; }
+.footer-bottom { max-width: var(--max-w); margin: 0 auto; padding: 1.5rem 0; display: flex; flex-direction: column; align-items: center; gap: 0.4rem; text-align: center; }
+.footer-copy { font-family: 'Space Mono', monospace; font-size: 0.65rem; color: rgba(255,255,255,0.14); letter-spacing: 0.06em; }
+.footer-seo  { font-family: 'Space Mono', monospace; font-size: 0.6rem; color: rgba(255,255,255,0.08); letter-spacing: 0.08em; }
+
+/* ── WHATSAPP FLOAT ────────────────────────────────── */
+.wa-float {
+  position: fixed; bottom: 1.75rem; right: 1.75rem; z-index: 99;
+  width: 54px; height: 54px; background: var(--wa); border-radius: 50%;
+  display: flex; align-items: center; justify-content: center;
+  color: #fff; text-decoration: none;
+  box-shadow: 0 4px 20px rgba(37,211,102,0.4);
+  transition: transform .25s;
+}
+.wa-float:hover { transform: scale(1.1); }
+.wa-float svg { width: 26px; height: 26px; }
+.wa-pulse {
+  position: absolute; inset: 0; border-radius: 50%;
+  border: 2px solid var(--wa);
+  animation: pulse 2.5s ease-out infinite;
+}
+
+/* ══════════════════════════════════════════════════
+   RESPONSIVE
+══════════════════════════════════════════════════ */
+
+/* Tablet */
+@media (max-width: 1024px) {
+  .why-grid { grid-template-columns: repeat(2, 1fr); }
+  .achievements-grid { grid-template-columns: 1fr 1fr; }
+  .achievement-featured { grid-column: span 2; flex-direction: row; }
+  .achievement-featured .achievement-img { width: 50%; height: auto; min-height: 280px; }
+  .workshops-grid { grid-template-columns: repeat(2, 1fr); }
+  .ig-grid { grid-template-columns: repeat(3, 1fr); }
+}
+
+/* Mobile */
+@media (max-width: 640px) {
+  :root { --section-py: 4rem; }
+
+  /* Nav */
+  .nav-sfm-text { display: none; }
+  .nav-links {
+    position: fixed; top: var(--nav-h); left: 0; right: 0; bottom: 0;
+    background: rgba(0,0,0,0.97); backdrop-filter: blur(20px);
+    flex-direction: column; align-items: center; justify-content: center;
+    gap: 0.75rem;
+    transform: translateX(100%); transition: transform .3s;
+    border-top: 1px solid var(--border);
+  }
+  .nav-links.open { transform: none; }
+  .nav-link { font-size: 1rem; padding: 0.75rem 2rem; }
+  .nav-cta { margin-left: 0; margin-top: 0.5rem; }
+  .nav-toggle { display: flex; }
+
+  /* Hero */
+  .hero-role { display: block; border-left: none; padding-left: 0; text-align: center; border-top: 2px solid var(--gold); padding-top: 0.75rem; }
+
+  /* Stats */
+  .stat-divider { display: none; }
+  .stats-inner { gap: 0.5rem; }
+  .stat-block { padding: 0.5rem 1rem; }
+
+  /* Why grid */
+  .why-grid { grid-template-columns: 1fr; }
+
+  /* Achievements */
+  .achievements-grid { grid-template-columns: 1fr; }
+  .achievement-featured { grid-column: auto; flex-direction: column; }
+  .achievement-featured .achievement-img { width: 100%; height: 220px; }
+
+  /* Workshops */
+  .workshops-grid { grid-template-columns: 1fr; }
+  .workshops-cta-strip { flex-direction: column; text-align: center; }
+
+  /* Media */
+  .video-grid { grid-template-columns: 1fr; }
+
+  /* IG */
+  .ig-grid { grid-template-columns: repeat(2, 1fr); }
+
+  /* CTA options */
+  .cta-options { grid-template-columns: 1fr; }
+
+  /* Footer */
+  .footer-inner { text-align: center; }
+  .footer-nav { justify-content: center; }
+  .footer-social { align-items: center; }
+}
+
+/* Reduced motion */
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after { animation-duration: 0.001ms !important; transition-duration: 0.001ms !important; }
+}
