@@ -458,6 +458,54 @@ hr.rule { border: none; border-top: 1px solid var(--border); margin: 0; }
 .media-panel { display: none; }
 .media-panel.active { display: block; }
 
+/* ── CAREER HIGHLIGHTS GALLERY ─────────────────────── */
+.achieve-tabs {
+  display: flex; gap: 0; border-bottom: 1px solid var(--border);
+  margin-bottom: 2rem; overflow-x: auto; -webkit-overflow-scrolling: touch;
+}
+.achieve-tab {
+  font-family: 'Space Mono', monospace; font-size: 0.7rem; letter-spacing: 0.12em;
+  text-transform: uppercase; color: var(--mid); background: none; border: none;
+  padding: 0.8rem 1.4rem; cursor: pointer; border-bottom: 2px solid transparent;
+  margin-bottom: -1px; white-space: nowrap; transition: color .2s, border-color .2s;
+}
+.achieve-tab:hover { color: #fff; }
+.achieve-tab.active { color: var(--gold); border-bottom-color: var(--gold); }
+.tab-badge {
+  display: inline-flex; align-items: center; justify-content: center;
+  min-width: 1.35rem; height: 1.35rem; padding: 0 0.3rem;
+  background: rgba(255,255,255,0.08); border-radius: 999px;
+  font-size: 0.6rem; font-weight: 700; margin-left: 0.35rem; color: inherit;
+}
+.achieve-tab.active .tab-badge { background: rgba(212,175,55,0.18); }
+
+.achieve-panel { display: none; }
+.achieve-panel.active { display: block; }
+.achieve-panel[hidden] { display: none !important; }
+
+.achieve-grid {
+  display: grid; grid-template-columns: repeat(3, 1fr); gap: 1rem;
+}
+.achieve-grid-center { justify-content: center; max-width: 500px; margin: 0 auto; }
+@media (max-width: 767px) { .achieve-grid { grid-template-columns: repeat(2, 1fr); gap: 0.75rem; } }
+
+.achieve-card {
+  position: relative; border-radius: 6px; overflow: hidden; background: #111;
+  aspect-ratio: 3/4;
+}
+.achieve-card img {
+  width: 100%; height: 100%; object-fit: cover; display: block;
+  transition: transform 0.4s ease;
+}
+.achieve-card:hover img { transform: scale(1.04); }
+.achieve-name {
+  position: absolute; bottom: 0; left: 0; right: 0;
+  padding: 0.65rem 0.65rem 0.55rem;
+  background: linear-gradient(transparent, rgba(0,0,0,0.82));
+  font-size: 0.67rem; font-weight: 600; letter-spacing: 0.03em;
+  color: rgba(255,255,255,0.9); line-height: 1.35; margin: 0;
+}
+
 .media-grid {
   display: grid;
   grid-template-columns: repeat(2, 1fr);

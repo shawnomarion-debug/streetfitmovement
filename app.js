@@ -85,6 +85,46 @@ mediaTabsList.forEach((tab, i) => {
   });
 });
 
+/* ── ACHIEVEMENT TABS ──────────────────────────────── */
+document.querySelectorAll('.achieve-tab').forEach(tab => {
+  tab.addEventListener('click', () => {
+    const target = tab.dataset.tab;
+    document.querySelectorAll('.achieve-tab').forEach(t => {
+      t.classList.remove('active');
+      t.setAttribute('aria-selected', 'false');
+      t.setAttribute('tabindex', '-1');
+    });
+    tab.classList.add('active');
+    tab.setAttribute('aria-selected', 'true');
+    tab.setAttribute('tabindex', '0');
+
+    document.querySelectorAll('.achieve-panel').forEach(p => {
+      p.classList.remove('active');
+      p.hidden = true;
+    });
+    const panel = document.getElementById('achieve-' + target);
+    if (panel) {
+      panel.classList.add('active');
+      panel.hidden = false;
+      panel.querySelectorAll('.reveal').forEach(el => el.classList.add('visible'));
+      panel.querySelectorAll('img[loading="lazy"]').forEach(im => { im.loading = 'eager'; });
+    }
+  });
+});
+
+const achieveTabsList = Array.from(document.querySelectorAll('.achieve-tab'));
+achieveTabsList.forEach((tab, i) => {
+  tab.addEventListener('keydown', e => {
+    let next = null;
+    if (e.key === 'ArrowRight') next = (i + 1) % achieveTabsList.length;
+    else if (e.key === 'ArrowLeft') next = (i - 1 + achieveTabsList.length) % achieveTabsList.length;
+    else return;
+    e.preventDefault();
+    achieveTabsList[next].focus();
+    achieveTabsList[next].click();
+  });
+});
+
 /* ── YOUTUBE FACADE: load iframe only on click ─────── */
 document.querySelectorAll('.video-facade').forEach(facade => {
   facade.addEventListener('click', () => {
