@@ -135,6 +135,52 @@ if ('loading' in HTMLImageElement.prototype) {
   lazyImgs.forEach(img => imgObserver.observe(img));
 }
 
+/* ── CARD RAILS: 3 featured + "View all" (reusable) ── */
+function initCardRails() {
+  const FEATURED = 3;
+  document.querySelectorAll('[data-rail]').forEach(rail => {
+    const cards = Array.from(rail.children);
+    if (cards.length <= FEATURED) return;            // nothing to collapse
+
+    rail.setAttribute('data-expanded', 'false');
+    cards.forEach((c, i) => { if (i >= FEATURED) c.classList.add('rail-extra'); });
+
+    const label  = rail.getAttribute('data-rail-label') || 'items';
+    const total  = cards.length;
+
+    const controls = document.createElement('div');
+    controls.className = 'rail-controls';
+
+    const btn = document.createElement('button');
+    btn.type = 'button';
+    btn.className = 'rail-toggle btn-ghost btn-sm';
+    btn.setAttribute('aria-expanded', 'false');
+
+    const setLabel = (expanded) => {
+      btn.textContent = expanded ? 'Show less ↑' : `View all ${total} ${label} →`;
+    };
+    setLabel(false);
+
+    btn.addEventListener('click', () => {
+      const expanded = rail.getAttribute('data-expanded') === 'true';
+      const next = !expanded;
+      rail.setAttribute('data-expanded', String(next));
+      btn.setAttribute('aria-expanded', String(next));
+      setLabel(next);
+      if (next) {
+        // reveal any cards that were hidden so they aren't stuck at opacity 0
+        cards.forEach(c => c.classList.add('visible'));
+      } else {
+        rail.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      }
+    });
+
+    controls.appendChild(btn);
+    rail.insertAdjacentElement('afterend', controls);
+  });
+}
+initCardRails();
+
 /* ── SMOOTH ANCHOR OFFSET (accounts for fixed nav) ─── */
 document.querySelectorAll('a[href^="#"]').forEach(a => {
   a.addEventListener('click', e => {
