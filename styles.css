@@ -687,6 +687,12 @@ footer { background: #000; border-top: 1px solid var(--border); padding: 3rem 1.
 .rail-controls { text-align: center; margin-top: 2rem; }
 .rail-toggle { cursor: pointer; }
 
+/* Desktop/tablet: a collapsed rail shows its 3 featured cards in one even
+   row (prevents the empty grid cell when the base grid is 2 columns). */
+@media (min-width: 768px) {
+  [data-rail][data-expanded="false"] { grid-template-columns: repeat(3, 1fr); }
+}
+
 /* Mobile/tablet: collapsed rail becomes a swipeable row */
 @media (max-width: 767px) {
   [data-rail][data-expanded="false"] {
