@@ -21,8 +21,9 @@
   <meta name="twitter:description" content="Breakdance Artist · Certified Fitness Trainer · Movement Coach — Goa, India" />
 
   <!-- Favicon -->
-  <link rel="icon" type="image/svg+xml" href="assets/icons/favicon.svg" />
-  <link rel="apple-touch-icon" sizes="180x180" href="assets/icons/apple-touch-icon.png" />
+  <link rel="icon" type="image/png" href="assets/images/shane-logo.png" />
+  <link rel="apple-touch-icon" sizes="180x180" href="assets/images/shane-logo.png" />
+  <meta name="theme-color" content="#000000" />
 
   <!-- Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com" />
@@ -30,8 +31,31 @@
   <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Space+Grotesk:wght@400;500;600;700&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet" />
 
   <link rel="stylesheet" href="styles.css" />
+
+  <!-- Structured data -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "LocalBusiness",
+    "name": "STREETFITMOVEMENT",
+    "image": "https://streetfitmovement.com/assets/images/og-image.jpg",
+    "url": "https://streetfitmovement.com",
+    "telephone": "+91-88300-67403",
+    "description": "Personal training, movement coaching, breakdance & nutrition coaching with Shane Mendes in Goa, India. Battle of the Year India winner and Red Bull BC One finalist.",
+    "areaServed": "Goa, India",
+    "address": { "@type": "PostalAddress", "addressRegion": "Goa", "addressCountry": "IN" },
+    "sameAs": ["https://instagram.com/trainwidshane"],
+    "founder": {
+      "@type": "Person",
+      "name": "Shane Mendes",
+      "jobTitle": "Certified Personal Trainer & Movement Coach"
+    }
+  }
+  </script>
 </head>
 <body>
+
+<a class="skip-link" href="#hero">Skip to content</a>
 
 <nav id="nav" role="navigation" aria-label="Main navigation">
   <a href="#hero" class="nav-brand" aria-label="STREETFITMOVEMENT home">
@@ -49,7 +73,7 @@
     <a href="https://wa.me/918830067403?text=Hi%20Shane!%20I%27d%20like%20to%20book%20a%20consultation."
        target="_blank" rel="noopener" class="nav-link nav-cta">Book Now</a>
   </div>
-  <button class="nav-toggle" id="navToggle" aria-label="Open menu" aria-expanded="false">
+  <button type="button" class="nav-toggle" id="navToggle" aria-label="Open menu" aria-expanded="false" aria-controls="navMenu">
     <span></span><span></span><span></span>
   </button>
 </nav>
@@ -616,7 +640,7 @@
           </select>
         </div>
       </div>
-      <button class="bmi-btn" id="bmiBtn">Calculate BMI →</button>
+      <button type="button" class="bmi-btn" id="bmiBtn">Calculate BMI →</button>
       <div class="bmi-result" id="bmi-result">
         <div class="bmi-number" id="bmi-num">—</div>
         <div class="bmi-category" id="bmi-cat">—</div>
@@ -642,24 +666,24 @@
   </div>
   <div class="section-inner">
     <div class="media-tabs" role="tablist" aria-label="Media categories">
-      <button class="media-tab active" role="tab" aria-selected="true"  data-tab="photos">Photos</button>
-      <button class="media-tab"        role="tab" aria-selected="false" data-tab="videos">Videos</button>
-      <button class="media-tab"        role="tab" aria-selected="false" data-tab="competitions">Competitions</button>
+      <button type="button" class="media-tab active" role="tab" id="tabbtn-photos" aria-controls="tab-photos" aria-selected="true"  data-tab="photos">Photos</button>
+      <button type="button" class="media-tab" role="tab" id="tabbtn-videos" aria-controls="tab-videos" aria-selected="false" data-tab="videos">Videos</button>
+      <button type="button" class="media-tab" role="tab" id="tabbtn-competitions" aria-controls="tab-competitions" aria-selected="false" data-tab="competitions">Competitions</button>
     </div>
-    <div class="media-panel active" id="tab-photos" role="tabpanel">
+    <div class="media-panel active" id="tab-photos" role="tabpanel" tabindex="0" aria-labelledby="tabbtn-photos">
       <div class="media-grid">
         <!-- REPLACE each img-ph with an actual <img> tag -->
-        <div class="media-item tall"><img src="assets/images/gallery/photo-01.jpg" alt="Shane Mendes battle performance at Battle of the Year India" loading="lazy" style="width:100%;height:100%;object-fit:cover;display:block;" /><div class="media-overlay"><div class="media-label">Battle Performance — BOTY India</div></div></div>
+        <div class="media-item"><img src="assets/images/gallery/photo-01.jpg" alt="Shane Mendes battle performance at Battle of the Year India" loading="lazy" style="width:100%;height:100%;object-fit:cover;display:block;" /><div class="media-overlay"><div class="media-label">Battle Performance — BOTY India</div></div></div>
         <div class="media-item"><img src="assets/images/gallery/photo-02.jpg" alt="Shane Mendes holding a headstand freeze" loading="lazy" style="width:100%;height:100%;object-fit:cover;display:block;" /><div class="media-overlay"><div class="media-label">Headstand Freeze</div></div></div>
         <div class="media-item"><img src="assets/images/gallery/photo-03.jpg" alt="Shane Mendes coaching a personal training session" loading="lazy" style="width:100%;height:100%;object-fit:cover;display:block;" /><div class="media-overlay"><div class="media-label">Personal Training</div></div></div>
         <div class="media-item"><img src="assets/images/gallery/photo-04.jpg" alt="Shane Mendes leading a house dance workshop" loading="lazy" style="width:100%;height:100%;object-fit:cover;display:block;" /><div class="media-overlay"><div class="media-label">House Dance Workshop</div></div></div>
         <div class="media-item"><img src="assets/images/gallery/photo-05.jpg" alt="Shane Mendes during Capoeira training" loading="lazy" style="width:100%;height:100%;object-fit:cover;display:block;" /><div class="media-overlay"><div class="media-label">Capoeira Training</div></div></div>
-        <div class="media-item tall"><img src="assets/images/gallery/photo-06.jpg" alt="Shane Mendes competing as a Red Bull BC One finalist" loading="lazy" style="width:100%;height:100%;object-fit:cover;display:block;" /><div class="media-overlay"><div class="media-label">Red Bull BC One — Finalist</div></div></div>
+        <div class="media-item"><img src="assets/images/gallery/photo-06.jpg" alt="Shane Mendes competing as a Red Bull BC One finalist" loading="lazy" style="width:100%;height:100%;object-fit:cover;display:block;" /><div class="media-overlay"><div class="media-label">Red Bull BC One — Finalist</div></div></div>
         <div class="media-item"><img src="assets/images/gallery/photo-07.jpg" alt="Shane Mendes coaching a mobility and recovery session" loading="lazy" style="width:100%;height:100%;object-fit:cover;display:block;" /><div class="media-overlay"><div class="media-label">Mobility &amp; Recovery</div></div></div>
         <div class="media-item"><img src="assets/images/gallery/photo-08.jpg" alt="Shane Mendes in a choreography showcase" loading="lazy" style="width:100%;height:100%;object-fit:cover;display:block;" /><div class="media-overlay"><div class="media-label">Choreography Showcase</div></div></div>
       </div>
     </div>
-    <div class="media-panel" id="tab-videos" role="tabpanel" hidden>
+    <div class="media-panel" id="tab-videos" role="tabpanel" tabindex="0" aria-labelledby="tabbtn-videos" hidden>
       <div class="video-grid">
         <!-- REPLACE with: <iframe src="https://www.youtube.com/embed/VIDEO_ID" title="..." loading="lazy" allowfullscreen></iframe> -->
         <div class="video-ph"><div class="video-ph-inner"><div class="video-play" aria-hidden="true">▶</div><p>Performance Reel<br/><span>YouTube: Add VIDEO_ID_1</span></p></div></div>
@@ -668,7 +692,7 @@
         <div class="video-ph"><div class="video-ph-inner"><div class="video-play" aria-hidden="true">▶</div><p>BOTY India Highlights<br/><span>YouTube: Add VIDEO_ID_4</span></p></div></div>
       </div>
     </div>
-    <div class="media-panel" id="tab-competitions" role="tabpanel" hidden>
+    <div class="media-panel" id="tab-competitions" role="tabpanel" tabindex="0" aria-labelledby="tabbtn-competitions" hidden>
       <div class="media-grid">
         <div class="media-item"><img src="assets/images/gallery/comp-boty.jpg" alt="Shane Mendes winning Battle of the Year India" loading="lazy" style="width:100%;height:100%;object-fit:cover;display:block;" /><div class="media-overlay"><div class="media-label">Battle of the Year India — Winner</div></div></div>
         <div class="media-item"><img src="assets/images/gallery/comp-redbull.jpg" alt="Shane Mendes as a Red Bull BC One finalist" loading="lazy" style="width:100%;height:100%;object-fit:cover;display:block;" /><div class="media-overlay"><div class="media-label">Red Bull BC One — Finalist</div></div></div>

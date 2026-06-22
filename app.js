@@ -66,6 +66,20 @@ document.querySelectorAll('.media-tab').forEach(tab => {
   });
 });
 
+// Arrow-key navigation between media tabs (WAI-ARIA tabs pattern)
+const mediaTabsList = Array.from(document.querySelectorAll('.media-tab'));
+mediaTabsList.forEach((tab, i) => {
+  tab.addEventListener('keydown', e => {
+    let next = null;
+    if (e.key === 'ArrowRight') next = (i + 1) % mediaTabsList.length;
+    else if (e.key === 'ArrowLeft') next = (i - 1 + mediaTabsList.length) % mediaTabsList.length;
+    else return;
+    e.preventDefault();
+    mediaTabsList[next].focus();
+    mediaTabsList[next].click();
+  });
+});
+
 /* ── BMI CALCULATOR ────────────────────────────────── */
 document.getElementById('bmiBtn').addEventListener('click', calcBMI);
 // Also allow Enter key in inputs
@@ -147,6 +161,7 @@ function initCardRails() {
 
     const label  = rail.getAttribute('data-rail-label') || 'items';
     const total  = cards.length;
+    if (!rail.id) rail.id = 'rail-' + label;
 
     const controls = document.createElement('div');
     controls.className = 'rail-controls';
@@ -155,6 +170,7 @@ function initCardRails() {
     btn.type = 'button';
     btn.className = 'rail-toggle btn-ghost btn-sm';
     btn.setAttribute('aria-expanded', 'false');
+    btn.setAttribute('aria-controls', rail.id);
 
     const setLabel = (expanded) => {
       btn.textContent = expanded ? 'Show less ↑' : `View all ${total} ${label} →`;

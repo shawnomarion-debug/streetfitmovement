@@ -17,6 +17,18 @@ body {
 :focus-visible { outline: 2px solid #fff; outline-offset: 3px; }
 img { display: block; max-width: 100%; height: auto; }
 
+/* Skip to content (keyboard / screen-reader) */
+.skip-link {
+  position: absolute; left: 0; top: 0; z-index: 200;
+  transform: translateY(-120%);
+  background: #fff; color: #000;
+  font-family: 'Space Mono', monospace; font-size: 0.75rem;
+  letter-spacing: 0.1em; text-transform: uppercase; text-decoration: none;
+  padding: 0.75rem 1.25rem;
+  transition: transform .2s;
+}
+.skip-link:focus { transform: translateY(0); }
+
 /* ── VARIABLES ─────────────────────────────────────── */
 :root {
   --ink: #000;
@@ -105,10 +117,7 @@ hr.rule { border: none; border-top: 1px solid var(--border); margin: 0; }
   width: 100%; height: 100%; min-height: 200px;
 }
 .img-ph-inner { text-align: center; padding: 1.5rem; }
-.img-ph-icon  { font-size: 2.5rem; margin-bottom: 0.75rem; opacity: 0.4; }
 .img-ph-label { font-family: 'Space Mono', monospace; font-size: 0.6rem; color: rgba(255,255,255,0.2); letter-spacing: 0.08em; line-height: 1.8; }
-.img-ph-landscape { min-height: 200px; }
-.img-ph-square    { aspect-ratio: 1; min-height: unset; height: 100%; }
 
 /* ── BADGE / TAGS ──────────────────────────────────── */
 .badge {
@@ -143,13 +152,6 @@ hr.rule { border: none; border-top: 1px solid var(--border); margin: 0; }
 }
 
 .nav-brand { display: flex; align-items: center; gap: 0.6rem; text-decoration: none; }
-.nav-sfm-mark {
-  width: 34px; height: 34px; background: #fff; color: #000;
-  font-family: 'Bebas Neue', sans-serif; font-size: 0.9rem; letter-spacing: 0.05em;
-  display: flex; align-items: center; justify-content: center; flex-shrink: 0;
-  /* LOGO: once shane-logo.png is placed, replace this block with an <img> */
-}
-.nav-logo-img { height: 34px; width: auto; object-fit: contain; }
 .nav-sfm-text { font-family: 'Bebas Neue', sans-serif; font-size: 1.2rem; letter-spacing: 0.15em; color: #fff; }
 
 .nav-links { display: flex; align-items: center; gap: 0.25rem; }
@@ -202,11 +204,6 @@ hr.rule { border: none; border-top: 1px solid var(--border); margin: 0; }
   display: flex; align-items: center; justify-content: center;
 }
 .hero-logo img { width: 100%; height: 100%; object-fit: cover; }
-.hero-logo-inner {
-  font-family: 'Bebas Neue', sans-serif; font-size: 2rem; letter-spacing: 0.08em;
-  color: rgba(255,255,255,0.25);
-  /* Remove once real logo is added */
-}
 
 .hero-eyebrow {
   display: flex; align-items: center; justify-content: center;
@@ -453,8 +450,6 @@ hr.rule { border: none; border-top: 1px solid var(--border); margin: 0; }
   overflow: hidden;
   cursor: pointer;
 }
-/* Remove tall class effect — uniform grid, no empty spaces */
-.media-item.tall { grid-row: unset; }
 .media-item img {
   width: 100%; height: 100%;
   object-fit: cover; display: block;
@@ -648,7 +643,7 @@ footer { background: #000; border-top: 1px solid var(--border); padding: 3rem 1.
 .rail-toggle { cursor: pointer; }
 
 /* Mobile/tablet: collapsed rail becomes a swipeable row */
-@media (max-width: 760px) {
+@media (max-width: 767px) {
   [data-rail][data-expanded="false"] {
     display: flex;
     overflow-x: auto;
