@@ -153,7 +153,9 @@ hr.rule { border: none; border-top: 1px solid var(--border); margin: 0; }
 }
 
 .nav-brand { display: flex; align-items: center; gap: 0.6rem; text-decoration: none; }
-.nav-sfm-text { font-family: 'Bebas Neue', sans-serif; font-size: 1.2rem; letter-spacing: 0.15em; color: #fff; }
+.nav-sfm-text { display: flex; flex-direction: column; line-height: 1; color: #fff; }
+.nav-brand-name { font-family: 'Space Grotesk', sans-serif; font-weight: 700; font-size: 1.1rem; letter-spacing: 0.02em; }
+.nav-brand-sub { font-family: 'Space Mono', monospace; font-size: 0.55rem; letter-spacing: 0.2em; text-transform: uppercase; color: rgba(255,255,255,0.5); margin-top: 0.3rem; }
 
 .nav-links { display: flex; align-items: center; gap: 0.25rem; }
 .nav-link {
