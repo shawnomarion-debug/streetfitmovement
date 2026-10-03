@@ -1,5 +1,5 @@
 /* ═══════════════════════════════════════════════════════
-   STREETFITMOVEMENT — app.js
+   TrainwidShane — app.js
 ═══════════════════════════════════════════════════════ */
 
 /* ── NAV: scroll state + mobile toggle ─────────────── */
@@ -166,7 +166,7 @@ function calcBMI() {
     tip = "Your body needs more fuel. Shane's nutrition coaching can help you build lean mass with the right foods and training structure.";
   } else if (bmi < 25) {
     cat = 'Healthy Weight';
-    tip = "Great foundation! Now is the perfect time to build strength, improve mobility, and elevate your performance with STREETFITMOVEMENT.";
+    tip = "Great foundation! Now is the perfect time to build strength, improve mobility, and elevate your performance with TrainwidShane.";
   } else if (bmi < 30) {
     cat = 'Overweight';
     tip = "Totally manageable. Shane's combined dance + fitness training is proven to torch fat while keeping sessions genuinely fun and sustainable.";

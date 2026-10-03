@@ -1,4 +1,5 @@
-# STREETFITMOVEMENT — Shane Mendes
+# TrainwidShane — Street Fit Movement
+**Shane Mendes · www.trainwidshane.com**
 **Breakdance Artist · Certified Fitness Trainer · Movement Coach — Goa, India**
 
 ---
@@ -43,11 +44,11 @@ streetfitmovement/
 ### Logo
 Replace the `<div class="hero-logo-inner">SFM</div>` in the hero with:
 ```html
-<img src="assets/images/shane-logo.png" alt="Shane Mendes — STREETFITMOVEMENT" />
+<img src="assets/images/shane-logo.png" alt="Shane Mendes — TrainwidShane" />
 ```
 And in the nav, replace `.nav-sfm-mark` span with:
 ```html
-<img src="assets/images/shane-logo.png" alt="STREETFITMOVEMENT" class="nav-logo-img" />
+<img src="assets/images/shane-logo.png" alt="TrainwidShane" class="nav-logo-img" />
 ```
 
 ### Photos
@@ -85,8 +86,8 @@ do a find-and-replace on `918830067403`.
 2. Go to Settings → Pages → Source: `main` branch, `/ (root)`
 3. Site will be live at `https://yourusername.github.io/streetfitmovement/`
 
-For a custom domain (streetfitmovement.com):
-- Add a `CNAME` file to the root containing: `streetfitmovement.com`
+For a custom domain (www.trainwidshane.com):
+- Add a `CNAME` file to the root containing: `www.trainwidshane.com`
 - Point your domain DNS to GitHub Pages IPs
 
 ---
